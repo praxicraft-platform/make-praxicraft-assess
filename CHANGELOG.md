@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.3
+
+- fix: align Make deploy script with @makehq/cli 1.4 flags
+
 ## 0.0.2
 
 - docs: align README with Zapier-style product guide
