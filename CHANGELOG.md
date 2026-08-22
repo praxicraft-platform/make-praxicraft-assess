@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.5
+
+- Maintenance release.
+
 ## 0.0.4
 
 - fix: preflight Make app name/version before deploy
