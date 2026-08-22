@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.6
+
+- fix: skip epoch on instant triggers; verify webhook link
+
 ## 0.0.5
 
 - Maintenance release.
