@@ -29,14 +29,17 @@ function missingSecrets() {
   );
 }
 
-function runMake(args, { allowFail = false } = {}) {
+function runMake(args, { allowFail = false, quiet = false } = {}) {
   const r = spawnSync("npx", ["--yes", "@makehq/cli@1.4.0", "--output=json", ...args], {
     env: { ...process.env },
     encoding: "utf8",
     maxBuffer: 20 * 1024 * 1024,
   });
-  if (r.stdout) process.stdout.write(r.stdout);
-  if (r.stderr) process.stderr.write(r.stderr);
+  const hide = quiet || (allowFail && r.status !== 0);
+  if (!hide) {
+    if (r.stdout) process.stdout.write(r.stdout);
+    if (r.stderr) process.stderr.write(r.stderr);
+  }
   if (r.status !== 0 && !allowFail) {
     throw new Error(`make-cli failed (${r.status}): ${args.slice(0, 6).join(" ")}…`);
   }
@@ -180,17 +183,24 @@ function typeIdFor(moduleType) {
   return id;
 }
 
-function syncModuleSections(appName, version, modName, files) {
+function syncModuleSections(appName, version, modName, files, moduleType) {
+  // epoch is only valid on polling triggers (typeId 1), not instant/webhook triggers.
   const map = {
     communication: "api",
     mappableParams: "parameters",
-    staticParams: "epoch",
     interface: "interface",
     samples: "samples",
   };
+  if (moduleType === "trigger") {
+    map.staticParams = "epoch";
+  }
+
   for (const [key, rel] of Object.entries(files || {})) {
     const section = map[key];
     if (!section) {
+      if (key === "staticParams" && moduleType !== "trigger") {
+        continue; // instant triggers: event lives on the webhook component
+      }
       console.warn(`  skip unknown codeFiles key ${modName}.${key}`);
       continue;
     }
@@ -212,6 +222,36 @@ function syncModuleSections(appName, version, modName, files) {
   }
 }
 
+function makeApiPatch(pathSuffix, body) {
+  const zone = process.env.MAKE_ZONE.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  const url = `https://${zone}/api/v2/sdk/apps/${pathSuffix}`;
+  const r = spawnSync(
+    "curl",
+    [
+      "-sS",
+      "-w",
+      "\n%{http_code}",
+      "-X",
+      "PATCH",
+      url,
+      "-H",
+      `Authorization: Token ${process.env.MAKE_API_KEY}`,
+      "-H",
+      "Content-Type: application/json",
+      "-H",
+      "Accept: application/json",
+      "-d",
+      JSON.stringify(body),
+    ],
+    { encoding: "utf8" },
+  );
+  const raw = r.stdout || "";
+  const nl = raw.lastIndexOf("\n");
+  const httpCode = nl >= 0 ? raw.slice(nl + 1).trim() : "";
+  const bodyText = nl >= 0 ? raw.slice(0, nl) : raw;
+  return { status: r.status ?? 1, httpCode, bodyText, stderr: r.stderr || "" };
+}
+
 function updateModuleMeta(appName, version, modName, meta, connectionName, webhookName) {
   const args = [
     "sdk-modules",
@@ -227,30 +267,46 @@ function updateModuleMeta(appName, version, modName, meta, connectionName, webho
 
   // CLI update has no --webhook; patch via Make REST when needed.
   if (meta.webhook && webhookName) {
-    const zone = process.env.MAKE_ZONE.replace(/^https?:\/\//, "").replace(/\/$/, "");
-    const url = `https://${zone}/api/v2/sdk/apps/${encodeURIComponent(appName)}/${encodeURIComponent(version)}/modules/${encodeURIComponent(modName)}`;
-    const r = spawnSync(
-      "curl",
-      [
-        "-sS",
-        "-X",
-        "PATCH",
-        url,
-        "-H",
-        `Authorization: Token ${process.env.MAKE_API_KEY}`,
-        "-H",
-        "Content-Type: application/json",
-        "-H",
-        "Accept: application/json",
-        "-d",
-        JSON.stringify({ webhook: webhookName, connection: connectionName }),
-      ],
-      { encoding: "utf8" },
+    const patch = makeApiPatch(
+      `${encodeURIComponent(appName)}/${encodeURIComponent(version)}/modules/${encodeURIComponent(modName)}`,
+      {
+        webhook: webhookName,
+        connection: connectionName || undefined,
+        label: meta.label || undefined,
+        description: meta.description || undefined,
+      },
     );
-    if (r.status !== 0) {
-      console.warn(`  ${modName} webhook link curl failed: ${r.stderr || r.stdout}`);
-    } else if (/^\s*\{.*"error"/i.test(r.stdout || "") || /not found/i.test(r.stdout || "")) {
-      console.warn(`  ${modName} webhook link response: ${r.stdout.slice(0, 200)}`);
+    if (patch.status !== 0 || (patch.httpCode && !patch.httpCode.startsWith("2"))) {
+      console.warn(
+        `  ${modName} webhook PATCH failed http=${patch.httpCode}: ${patch.bodyText.slice(0, 300) || patch.stderr}`,
+      );
+    } else {
+      const verified = parseJsonLoose(
+        runMake(
+          [
+            "sdk-modules",
+            "get",
+            `--app-name=${appName}`,
+            `--app-version=${version}`,
+            `--module-name=${modName}`,
+          ],
+          { allowFail: true },
+        ).stdout,
+      );
+      const linked =
+        verified &&
+        (verified.webhook === webhookName ||
+          verified.appModule?.webhook === webhookName ||
+          verified.module?.webhook === webhookName);
+      if (linked) {
+        console.log(`  ${modName} linked webhook ${webhookName}`);
+      } else {
+        console.warn(
+          `  ${modName} webhook PATCH http=${patch.httpCode} but get still shows webhook=${JSON.stringify(
+            verified?.webhook ?? verified?.appModule?.webhook ?? null,
+          )} (wanted ${webhookName}). body=${patch.bodyText.slice(0, 200)}`,
+        );
+      }
     }
   }
 }
@@ -280,7 +336,7 @@ function ensureModule(appName, version, modName, meta, connectionName, webhookNa
       "--module-init-mode=blank",
     ]);
   }
-  syncModuleSections(appName, version, modName, meta.codeFiles);
+  syncModuleSections(appName, version, modName, meta.codeFiles, meta.moduleType || "action");
   try {
     updateModuleMeta(appName, version, modName, meta, connectionName, webhookName);
   } catch (err) {
@@ -288,8 +344,7 @@ function ensureModule(appName, version, modName, meta, connectionName, webhookNa
   }
 }
 
-function summarizeApps(payload) {
-  const rows = [];
+function listAppRows(payload) {
   const arr = Array.isArray(payload)
     ? payload
     : Array.isArray(payload?.apps)
@@ -299,20 +354,28 @@ function summarizeApps(payload) {
         : Array.isArray(payload?.data)
           ? payload.data
           : [];
-  for (const a of arr) {
-    if (!a || typeof a !== "object") continue;
-    const n = a.name || a.appName;
-    const v = a.version ?? a.appVersion;
-    if (n != null) rows.push(`${n}@${v == null ? "?" : v}`);
-  }
-  return rows;
+  return arr
+    .filter((a) => a && typeof a === "object" && (a.name || a.appName))
+    .map((a) => ({
+      name: String(a.name || a.appName),
+      version: String(a.version ?? a.appVersion ?? "1"),
+      label: String(a.label || a.appLabel || ""),
+    }));
+}
+
+function summarizeApps(payload) {
+  return listAppRows(payload).map((a) => `${a.name}@${a.version}`);
 }
 
 /**
- * Fail fast when MAKE_APP_NAME / MAKE_APP_VERSION / MAKE_ZONE don't match a real Custom App.
- * Set MAKE_APP_CREATE=1 to create praxicraft-assess-style app when missing.
+ * Resolve MAKE_APP_NAME / MAKE_APP_VERSION against apps visible to the API key.
+ * Make often suffixes the Name (e.g. praxicraft-assess-5nwwt8).
+ * Returns { name, version }.
  */
-function ensureApp(name, version) {
+function ensureApp(requestedName, requestedVersion) {
+  let name = requestedName;
+  let version = requestedVersion;
+
   if (/\./.test(version) || /^v/i.test(version)) {
     console.warn(
       `WARNING: MAKE_APP_VERSION="${version}" looks like npm/semver. Make Custom App versions are usually integers like "1".`,
@@ -325,14 +388,42 @@ function ensureApp(name, version) {
   );
   if (got.status === 0) {
     console.log(`found app ${name}@${version}`);
-    return;
+    return { name, version };
   }
 
   const listed = parseJsonLoose(
     runMake(["sdk-apps", "list"], { allowFail: true }).stdout,
   );
-  const known = summarizeApps(listed);
-  console.error(`Unknown Make app ${name}@${version} in zone ${process.env.MAKE_ZONE}.`);
+  const rows = listAppRows(listed);
+  const known = rows.map((a) => `${a.name}@${a.version}`);
+
+  const match =
+    rows.find((a) => a.name === name && a.version === version) ||
+    rows.find((a) => a.name === name) ||
+    rows.find((a) => a.name.startsWith(`${name}-`)) ||
+    rows.find((a) => a.label.toLowerCase() === "praxicraft assess") ||
+    (rows.length === 1 ? rows[0] : null);
+
+  if (match) {
+    console.warn(
+      `MAKE_APP_NAME/VERSION ${name}@${version} not found; using listed app ${match.name}@${match.version}` +
+        (match.label ? ` (label: ${match.label})` : ""),
+    );
+    name = match.name;
+    version = match.version;
+    const again = runMake(
+      ["sdk-apps", "get", `--name=${name}`, `--version=${version}`],
+      { allowFail: true },
+    );
+    if (again.status === 0) {
+      console.log(`found app ${name}@${version}`);
+      return { name, version };
+    }
+  }
+
+  console.error(
+    `Unknown Make app ${requestedName}@${requestedVersion} in zone ${process.env.MAKE_ZONE}.`,
+  );
   if (known.length) {
     console.error(`Apps visible to this API key:\n  ${known.join("\n  ")}`);
   } else {
@@ -343,10 +434,9 @@ function ensureApp(name, version) {
   console.error(
     [
       "Fix GitHub Actions secrets:",
-      "  MAKE_APP_NAME     = exact Name from Make UI (e.g. praxicraft-assess), not the Label",
-      "  MAKE_APP_VERSION  = Make version integer (usually 1) — NOT package.json / v0.0.2",
-      "  MAKE_ZONE         = host from your Make URL (e.g. eu2.make.com)",
-      "Or create once: npx @makehq/cli@1.4.0 sdk-apps create --name=praxicraft-assess --label='Praxicraft Assess' --theme=#0D41FF --language=en --audience=global --private",
+      "  MAKE_ZONE         = host from browser URL (e.g. eu1.make.com)",
+      "  MAKE_APP_NAME     = exact Name from URL / sdk-apps list (e.g. praxicraft-assess-5nwwt8)",
+      "  MAKE_APP_VERSION  = version integer (usually 1) — NOT package.json / v0.0.2",
       "Or re-run deploy with MAKE_APP_CREATE=1 to create automatically.",
     ].join("\n"),
   );
@@ -356,7 +446,7 @@ function ensureApp(name, version) {
     runMake([
       "sdk-apps",
       "create",
-      `--name=${name}`,
+      `--name=${requestedName}`,
       "--label=Praxicraft Assess",
       "--description=Assess Public API for Make",
       "--theme=#0D41FF",
@@ -364,16 +454,21 @@ function ensureApp(name, version) {
       "--audience=global",
       "--private",
     ]);
-    if (version !== "1") {
-      throw new Error(
-        `Created ${name} at Make version 1, but MAKE_APP_VERSION=${version}. Set MAKE_APP_VERSION=1 and re-run.`,
-      );
+    const after = listAppRows(
+      parseJsonLoose(runMake(["sdk-apps", "list"], { allowFail: true }).stdout),
+    );
+    const created =
+      after.find((a) => a.name === requestedName) ||
+      after.find((a) => a.name.startsWith(`${requestedName}-`)) ||
+      after.find((a) => a.label.toLowerCase() === "praxicraft assess");
+    if (!created) {
+      throw new Error("MAKE_APP_CREATE created an app but it was not visible in sdk-apps list");
     }
-    console.log(`created app ${name}@1`);
-    return;
+    console.log(`created app ${created.name}@${created.version}`);
+    return { name: created.name, version: created.version };
   }
 
-  throw new Error(`Unknown app or version (${name}, ${version})`);
+  throw new Error(`Unknown app or version (${requestedName}, ${requestedVersion})`);
 }
 
 function ensureRpc(appName, version, rpcName, meta, connectionName) {
@@ -411,25 +506,10 @@ function ensureRpc(appName, version, rpcName, meta, connectionName) {
       readJson(rel),
     );
   }
-  // Best-effort connection attach via REST if CLI has no rpc update --connection
   if (connectionName) {
-    const zone = process.env.MAKE_ZONE.replace(/^https?:\/\//, "").replace(/\/$/, "");
-    const url = `https://${zone}/api/v2/sdk/apps/${encodeURIComponent(appName)}/${encodeURIComponent(version)}/rpcs/${encodeURIComponent(rpcName)}`;
-    spawnSync(
-      "curl",
-      [
-        "-sS",
-        "-X",
-        "PATCH",
-        url,
-        "-H",
-        `Authorization: Token ${process.env.MAKE_API_KEY}`,
-        "-H",
-        "Content-Type: application/json",
-        "-d",
-        JSON.stringify({ connection: connectionName, label: meta.label || rpcName }),
-      ],
-      { encoding: "utf8" },
+    makeApiPatch(
+      `${encodeURIComponent(appName)}/${encodeURIComponent(version)}/rpcs/${encodeURIComponent(rpcName)}`,
+      { connection: connectionName, label: meta.label || rpcName },
     );
   }
 }
@@ -441,16 +521,21 @@ function main() {
     process.exit(0);
   }
 
-  const name = process.env.MAKE_APP_NAME.trim();
-  const version = (process.env.MAKE_APP_VERSION || "1").trim();
-  console.log(`Deploying to Make app ${name}@${version} (zone=${process.env.MAKE_ZONE})`);
+  const requestedName = process.env.MAKE_APP_NAME.trim();
+  const requestedVersion = (process.env.MAKE_APP_VERSION || "1").trim();
+  console.log(
+    `Deploying to Make app ${requestedName}@${requestedVersion} (zone=${process.env.MAKE_ZONE})`,
+  );
 
+  let name;
+  let version;
   try {
-    ensureApp(name, version);
+    ({ name, version } = ensureApp(requestedName, requestedVersion));
   } catch (err) {
     console.error(`FATAL app: ${err.message}`);
     process.exit(1);
   }
+  console.log(`Resolved target ${name}@${version}`);
 
   let hardFailures = 0;
 
