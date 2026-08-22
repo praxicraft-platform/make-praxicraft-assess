@@ -1,0 +1,12 @@
+[
+  {
+    "name": "invite_token",
+    "type": "text",
+    "label": "invite_token"
+  },
+  {
+    "name": "status",
+    "type": "text",
+    "label": "status"
+  }
+]

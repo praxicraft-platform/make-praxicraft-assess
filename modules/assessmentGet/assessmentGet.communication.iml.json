@@ -1,0 +1,7 @@
+{
+  "url": "/assessments/{{parameters.slug}}/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

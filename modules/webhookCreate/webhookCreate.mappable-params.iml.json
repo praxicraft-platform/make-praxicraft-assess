@@ -1,0 +1,21 @@
+[
+  {
+    "name": "url",
+    "type": "url",
+    "label": "URL",
+    "required": true
+  },
+  {
+    "name": "events",
+    "type": "text",
+    "label": "Events",
+    "required": true,
+    "help": "Comma-separated event names, or a JSON array of event strings"
+  },
+  {
+    "name": "name",
+    "type": "text",
+    "label": "Name",
+    "required": false
+  }
+]

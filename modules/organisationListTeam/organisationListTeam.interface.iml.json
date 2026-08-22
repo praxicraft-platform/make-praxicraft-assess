@@ -1,0 +1,12 @@
+[
+  {
+    "name": "email",
+    "type": "text",
+    "label": "email"
+  },
+  {
+    "name": "role",
+    "type": "text",
+    "label": "role"
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "url": "/invites/{{parameters.token}}/remind/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'token')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

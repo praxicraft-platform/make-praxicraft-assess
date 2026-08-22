@@ -1,0 +1,12 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "id"
+  },
+  {
+    "name": "candidate_email",
+    "type": "text",
+    "label": "candidate_email"
+  }
+]

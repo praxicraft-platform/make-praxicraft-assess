@@ -1,0 +1,7 @@
+{
+  "url": "/invites/{{parameters.token}}/result/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

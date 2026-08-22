@@ -1,0 +1,1200 @@
+{
+  "fileVersion": 1,
+  "generalCodeFiles": {
+    "base": "general/base.iml.json",
+    "common": "general/common.json",
+    "readme": "README.md",
+    "groups": "modules/groups.json"
+  },
+  "components": {
+    "connection": {
+      "apiKey": {
+        "label": "Praxicraft Assess API",
+        "codeFiles": {
+          "communication": "connections/apiKey/apiKey.communication.iml.json",
+          "params": "connections/apiKey/apiKey.params.iml.json"
+        }
+      }
+    },
+    "webhook": {
+      "assessEvents": {
+        "codeFiles": {
+          "communication": "webhooks/assessEvents/assessEvents.communication.iml.json",
+          "params": "webhooks/assessEvents/assessEvents.params.iml.json",
+          "attach": "webhooks/assessEvents/assessEvents.attach.iml.json",
+          "detach": "webhooks/assessEvents/assessEvents.detach.iml.json"
+        }
+      }
+    },
+    "module": {
+      "assessmentList": {
+        "moduleType": "search",
+        "label": "List Assessments",
+        "description": "List assessments in the organisation.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentList/assessmentList.communication.iml.json",
+          "mappableParams": "modules/assessmentList/assessmentList.mappable-params.iml.json",
+          "interface": "modules/assessmentList/assessmentList.interface.iml.json",
+          "samples": "modules/assessmentList/assessmentList.samples.iml.json"
+        }
+      },
+      "assessmentGet": {
+        "moduleType": "action",
+        "label": "Get Assessment",
+        "description": "Get one assessment by slug.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentGet/assessmentGet.communication.iml.json",
+          "mappableParams": "modules/assessmentGet/assessmentGet.mappable-params.iml.json",
+          "interface": "modules/assessmentGet/assessmentGet.interface.iml.json",
+          "samples": "modules/assessmentGet/assessmentGet.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "assessmentCreate": {
+        "moduleType": "action",
+        "label": "Create Assessment",
+        "description": "Create an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentCreate/assessmentCreate.communication.iml.json",
+          "mappableParams": "modules/assessmentCreate/assessmentCreate.mappable-params.iml.json",
+          "interface": "modules/assessmentCreate/assessmentCreate.interface.iml.json",
+          "samples": "modules/assessmentCreate/assessmentCreate.samples.iml.json"
+        },
+        "actionCrud": "create"
+      },
+      "assessmentUpdate": {
+        "moduleType": "action",
+        "label": "Update Assessment",
+        "description": "Update an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentUpdate/assessmentUpdate.communication.iml.json",
+          "mappableParams": "modules/assessmentUpdate/assessmentUpdate.mappable-params.iml.json",
+          "interface": "modules/assessmentUpdate/assessmentUpdate.interface.iml.json",
+          "samples": "modules/assessmentUpdate/assessmentUpdate.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "assessmentDuplicate": {
+        "moduleType": "action",
+        "label": "Duplicate Assessment",
+        "description": "Duplicate an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentDuplicate/assessmentDuplicate.communication.iml.json",
+          "mappableParams": "modules/assessmentDuplicate/assessmentDuplicate.mappable-params.iml.json",
+          "interface": "modules/assessmentDuplicate/assessmentDuplicate.interface.iml.json",
+          "samples": "modules/assessmentDuplicate/assessmentDuplicate.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "assessmentListResults": {
+        "moduleType": "search",
+        "label": "List Assessment Results",
+        "description": "List results for an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentListResults/assessmentListResults.communication.iml.json",
+          "mappableParams": "modules/assessmentListResults/assessmentListResults.mappable-params.iml.json",
+          "interface": "modules/assessmentListResults/assessmentListResults.interface.iml.json",
+          "samples": "modules/assessmentListResults/assessmentListResults.samples.iml.json"
+        }
+      },
+      "assessmentListCases": {
+        "moduleType": "search",
+        "label": "List Assessment Cases",
+        "description": "List cases attached to an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentListCases/assessmentListCases.communication.iml.json",
+          "mappableParams": "modules/assessmentListCases/assessmentListCases.mappable-params.iml.json",
+          "interface": "modules/assessmentListCases/assessmentListCases.interface.iml.json",
+          "samples": "modules/assessmentListCases/assessmentListCases.samples.iml.json"
+        }
+      },
+      "assessmentAttachCases": {
+        "moduleType": "action",
+        "label": "Attach Cases",
+        "description": "Attach cases to an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentAttachCases/assessmentAttachCases.communication.iml.json",
+          "mappableParams": "modules/assessmentAttachCases/assessmentAttachCases.mappable-params.iml.json",
+          "interface": "modules/assessmentAttachCases/assessmentAttachCases.interface.iml.json",
+          "samples": "modules/assessmentAttachCases/assessmentAttachCases.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "assessmentReplaceCases": {
+        "moduleType": "action",
+        "label": "Replace Cases",
+        "description": "Replace all cases on an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentReplaceCases/assessmentReplaceCases.communication.iml.json",
+          "mappableParams": "modules/assessmentReplaceCases/assessmentReplaceCases.mappable-params.iml.json",
+          "interface": "modules/assessmentReplaceCases/assessmentReplaceCases.interface.iml.json",
+          "samples": "modules/assessmentReplaceCases/assessmentReplaceCases.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "assessmentRemoveCase": {
+        "moduleType": "action",
+        "label": "Remove Case",
+        "description": "Remove one case from an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/assessmentRemoveCase/assessmentRemoveCase.communication.iml.json",
+          "mappableParams": "modules/assessmentRemoveCase/assessmentRemoveCase.mappable-params.iml.json",
+          "interface": "modules/assessmentRemoveCase/assessmentRemoveCase.interface.iml.json",
+          "samples": "modules/assessmentRemoveCase/assessmentRemoveCase.samples.iml.json"
+        },
+        "actionCrud": "delete"
+      },
+      "caseList": {
+        "moduleType": "search",
+        "label": "List Org Cases",
+        "description": "List organisation cases.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/caseList/caseList.communication.iml.json",
+          "mappableParams": "modules/caseList/caseList.mappable-params.iml.json",
+          "interface": "modules/caseList/caseList.interface.iml.json",
+          "samples": "modules/caseList/caseList.samples.iml.json"
+        }
+      },
+      "caseListPlatform": {
+        "moduleType": "search",
+        "label": "List Platform Cases",
+        "description": "List Praxicraft platform library cases.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/caseListPlatform/caseListPlatform.communication.iml.json",
+          "mappableParams": "modules/caseListPlatform/caseListPlatform.mappable-params.iml.json",
+          "interface": "modules/caseListPlatform/caseListPlatform.interface.iml.json",
+          "samples": "modules/caseListPlatform/caseListPlatform.samples.iml.json"
+        }
+      },
+      "caseCreate": {
+        "moduleType": "action",
+        "label": "Create Case",
+        "description": "Create an organisation case.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/caseCreate/caseCreate.communication.iml.json",
+          "mappableParams": "modules/caseCreate/caseCreate.mappable-params.iml.json",
+          "interface": "modules/caseCreate/caseCreate.interface.iml.json",
+          "samples": "modules/caseCreate/caseCreate.samples.iml.json"
+        },
+        "actionCrud": "create"
+      },
+      "caseGet": {
+        "moduleType": "action",
+        "label": "Get Case",
+        "description": "Get an organisation case.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/caseGet/caseGet.communication.iml.json",
+          "mappableParams": "modules/caseGet/caseGet.mappable-params.iml.json",
+          "interface": "modules/caseGet/caseGet.interface.iml.json",
+          "samples": "modules/caseGet/caseGet.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "caseUpdate": {
+        "moduleType": "action",
+        "label": "Update Case",
+        "description": "Update an organisation case.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/caseUpdate/caseUpdate.communication.iml.json",
+          "mappableParams": "modules/caseUpdate/caseUpdate.mappable-params.iml.json",
+          "interface": "modules/caseUpdate/caseUpdate.interface.iml.json",
+          "samples": "modules/caseUpdate/caseUpdate.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "caseDelete": {
+        "moduleType": "action",
+        "label": "Delete Case",
+        "description": "Delete an organisation case.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/caseDelete/caseDelete.communication.iml.json",
+          "mappableParams": "modules/caseDelete/caseDelete.mappable-params.iml.json",
+          "interface": "modules/caseDelete/caseDelete.interface.iml.json",
+          "samples": "modules/caseDelete/caseDelete.samples.iml.json"
+        },
+        "actionCrud": "delete"
+      },
+      "invitationList": {
+        "moduleType": "search",
+        "label": "List Invitations",
+        "description": "List invitations.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/invitationList/invitationList.communication.iml.json",
+          "mappableParams": "modules/invitationList/invitationList.mappable-params.iml.json",
+          "interface": "modules/invitationList/invitationList.interface.iml.json",
+          "samples": "modules/invitationList/invitationList.samples.iml.json"
+        }
+      },
+      "invitationInvite": {
+        "moduleType": "action",
+        "label": "Invite Candidate",
+        "description": "Invite a candidate to an active assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/invitationInvite/invitationInvite.communication.iml.json",
+          "mappableParams": "modules/invitationInvite/invitationInvite.mappable-params.iml.json",
+          "interface": "modules/invitationInvite/invitationInvite.interface.iml.json",
+          "samples": "modules/invitationInvite/invitationInvite.samples.iml.json"
+        },
+        "actionCrud": "create"
+      },
+      "invitationBulkInvite": {
+        "moduleType": "action",
+        "label": "Bulk Invite Candidates",
+        "description": "Invite many candidates to an assessment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/invitationBulkInvite/invitationBulkInvite.communication.iml.json",
+          "mappableParams": "modules/invitationBulkInvite/invitationBulkInvite.mappable-params.iml.json",
+          "interface": "modules/invitationBulkInvite/invitationBulkInvite.interface.iml.json",
+          "samples": "modules/invitationBulkInvite/invitationBulkInvite.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "invitationGet": {
+        "moduleType": "action",
+        "label": "Get Invitation",
+        "description": "Get an invitation by invite_token.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/invitationGet/invitationGet.communication.iml.json",
+          "mappableParams": "modules/invitationGet/invitationGet.mappable-params.iml.json",
+          "interface": "modules/invitationGet/invitationGet.interface.iml.json",
+          "samples": "modules/invitationGet/invitationGet.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "invitationGetResult": {
+        "moduleType": "action",
+        "label": "Get Invitation Result",
+        "description": "Get the scored result for an invitation.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/invitationGetResult/invitationGetResult.communication.iml.json",
+          "mappableParams": "modules/invitationGetResult/invitationGetResult.mappable-params.iml.json",
+          "interface": "modules/invitationGetResult/invitationGetResult.interface.iml.json",
+          "samples": "modules/invitationGetResult/invitationGetResult.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "invitationRemind": {
+        "moduleType": "action",
+        "label": "Remind Candidate",
+        "description": "Send an invitation reminder.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/invitationRemind/invitationRemind.communication.iml.json",
+          "mappableParams": "modules/invitationRemind/invitationRemind.mappable-params.iml.json",
+          "interface": "modules/invitationRemind/invitationRemind.interface.iml.json",
+          "samples": "modules/invitationRemind/invitationRemind.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "invitationCancel": {
+        "moduleType": "action",
+        "label": "Cancel Invitation",
+        "description": "Cancel a pending invitation.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/invitationCancel/invitationCancel.communication.iml.json",
+          "mappableParams": "modules/invitationCancel/invitationCancel.mappable-params.iml.json",
+          "interface": "modules/invitationCancel/invitationCancel.interface.iml.json",
+          "samples": "modules/invitationCancel/invitationCancel.samples.iml.json"
+        },
+        "actionCrud": "delete"
+      },
+      "pipelineList": {
+        "moduleType": "search",
+        "label": "List Pipelines",
+        "description": "List pipelines.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineList/pipelineList.communication.iml.json",
+          "mappableParams": "modules/pipelineList/pipelineList.mappable-params.iml.json",
+          "interface": "modules/pipelineList/pipelineList.interface.iml.json",
+          "samples": "modules/pipelineList/pipelineList.samples.iml.json"
+        }
+      },
+      "pipelineGet": {
+        "moduleType": "action",
+        "label": "Get Pipeline",
+        "description": "Get a pipeline by slug.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineGet/pipelineGet.communication.iml.json",
+          "mappableParams": "modules/pipelineGet/pipelineGet.mappable-params.iml.json",
+          "interface": "modules/pipelineGet/pipelineGet.interface.iml.json",
+          "samples": "modules/pipelineGet/pipelineGet.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "pipelineEnroll": {
+        "moduleType": "action",
+        "label": "Enroll Candidate",
+        "description": "Enroll a candidate in a pipeline.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineEnroll/pipelineEnroll.communication.iml.json",
+          "mappableParams": "modules/pipelineEnroll/pipelineEnroll.mappable-params.iml.json",
+          "interface": "modules/pipelineEnroll/pipelineEnroll.interface.iml.json",
+          "samples": "modules/pipelineEnroll/pipelineEnroll.samples.iml.json"
+        },
+        "actionCrud": "create"
+      },
+      "pipelineBulkEnroll": {
+        "moduleType": "action",
+        "label": "Bulk Enroll Candidates",
+        "description": "Enroll many candidates in a pipeline.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineBulkEnroll/pipelineBulkEnroll.communication.iml.json",
+          "mappableParams": "modules/pipelineBulkEnroll/pipelineBulkEnroll.mappable-params.iml.json",
+          "interface": "modules/pipelineBulkEnroll/pipelineBulkEnroll.interface.iml.json",
+          "samples": "modules/pipelineBulkEnroll/pipelineBulkEnroll.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "pipelineListEnrollments": {
+        "moduleType": "search",
+        "label": "List Enrollments",
+        "description": "List pipeline enrollments.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineListEnrollments/pipelineListEnrollments.communication.iml.json",
+          "mappableParams": "modules/pipelineListEnrollments/pipelineListEnrollments.mappable-params.iml.json",
+          "interface": "modules/pipelineListEnrollments/pipelineListEnrollments.interface.iml.json",
+          "samples": "modules/pipelineListEnrollments/pipelineListEnrollments.samples.iml.json"
+        }
+      },
+      "pipelineGetEnrollment": {
+        "moduleType": "action",
+        "label": "Get Enrollment",
+        "description": "Get one enrollment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineGetEnrollment/pipelineGetEnrollment.communication.iml.json",
+          "mappableParams": "modules/pipelineGetEnrollment/pipelineGetEnrollment.mappable-params.iml.json",
+          "interface": "modules/pipelineGetEnrollment/pipelineGetEnrollment.interface.iml.json",
+          "samples": "modules/pipelineGetEnrollment/pipelineGetEnrollment.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "pipelineReject": {
+        "moduleType": "action",
+        "label": "Reject Enrollment",
+        "description": "Reject a pipeline enrollment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineReject/pipelineReject.communication.iml.json",
+          "mappableParams": "modules/pipelineReject/pipelineReject.mappable-params.iml.json",
+          "interface": "modules/pipelineReject/pipelineReject.interface.iml.json",
+          "samples": "modules/pipelineReject/pipelineReject.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "pipelineHold": {
+        "moduleType": "action",
+        "label": "Hold Enrollment",
+        "description": "Hold a pipeline enrollment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineHold/pipelineHold.communication.iml.json",
+          "mappableParams": "modules/pipelineHold/pipelineHold.mappable-params.iml.json",
+          "interface": "modules/pipelineHold/pipelineHold.interface.iml.json",
+          "samples": "modules/pipelineHold/pipelineHold.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "pipelineUnhold": {
+        "moduleType": "action",
+        "label": "Unhold Enrollment",
+        "description": "Unhold a pipeline enrollment.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/pipelineUnhold/pipelineUnhold.communication.iml.json",
+          "mappableParams": "modules/pipelineUnhold/pipelineUnhold.mappable-params.iml.json",
+          "interface": "modules/pipelineUnhold/pipelineUnhold.interface.iml.json",
+          "samples": "modules/pipelineUnhold/pipelineUnhold.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "webhookList": {
+        "moduleType": "search",
+        "label": "List Webhooks",
+        "description": "List webhook destinations.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/webhookList/webhookList.communication.iml.json",
+          "mappableParams": "modules/webhookList/webhookList.mappable-params.iml.json",
+          "interface": "modules/webhookList/webhookList.interface.iml.json",
+          "samples": "modules/webhookList/webhookList.samples.iml.json"
+        }
+      },
+      "webhookCreate": {
+        "moduleType": "action",
+        "label": "Create Webhook",
+        "description": "Register a webhook destination.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/webhookCreate/webhookCreate.communication.iml.json",
+          "mappableParams": "modules/webhookCreate/webhookCreate.mappable-params.iml.json",
+          "interface": "modules/webhookCreate/webhookCreate.interface.iml.json",
+          "samples": "modules/webhookCreate/webhookCreate.samples.iml.json"
+        },
+        "actionCrud": "create"
+      },
+      "webhookGet": {
+        "moduleType": "action",
+        "label": "Get Webhook",
+        "description": "Get a webhook destination.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/webhookGet/webhookGet.communication.iml.json",
+          "mappableParams": "modules/webhookGet/webhookGet.mappable-params.iml.json",
+          "interface": "modules/webhookGet/webhookGet.interface.iml.json",
+          "samples": "modules/webhookGet/webhookGet.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "webhookUpdate": {
+        "moduleType": "action",
+        "label": "Update Webhook",
+        "description": "Update a webhook destination.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/webhookUpdate/webhookUpdate.communication.iml.json",
+          "mappableParams": "modules/webhookUpdate/webhookUpdate.mappable-params.iml.json",
+          "interface": "modules/webhookUpdate/webhookUpdate.interface.iml.json",
+          "samples": "modules/webhookUpdate/webhookUpdate.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "webhookDelete": {
+        "moduleType": "action",
+        "label": "Delete Webhook",
+        "description": "Delete a webhook destination.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/webhookDelete/webhookDelete.communication.iml.json",
+          "mappableParams": "modules/webhookDelete/webhookDelete.mappable-params.iml.json",
+          "interface": "modules/webhookDelete/webhookDelete.interface.iml.json",
+          "samples": "modules/webhookDelete/webhookDelete.samples.iml.json"
+        },
+        "actionCrud": "delete"
+      },
+      "webhookListDeliveries": {
+        "moduleType": "search",
+        "label": "List Webhook Deliveries",
+        "description": "List recent deliveries for a webhook.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/webhookListDeliveries/webhookListDeliveries.communication.iml.json",
+          "mappableParams": "modules/webhookListDeliveries/webhookListDeliveries.mappable-params.iml.json",
+          "interface": "modules/webhookListDeliveries/webhookListDeliveries.interface.iml.json",
+          "samples": "modules/webhookListDeliveries/webhookListDeliveries.samples.iml.json"
+        }
+      },
+      "webhookTest": {
+        "moduleType": "action",
+        "label": "Test Webhook",
+        "description": "Send a webhook.test ping.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/webhookTest/webhookTest.communication.iml.json",
+          "mappableParams": "modules/webhookTest/webhookTest.mappable-params.iml.json",
+          "interface": "modules/webhookTest/webhookTest.interface.iml.json",
+          "samples": "modules/webhookTest/webhookTest.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "organisationGet": {
+        "moduleType": "action",
+        "label": "Get Organisation",
+        "description": "Get organisation profile and invite quota.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/organisationGet/organisationGet.communication.iml.json",
+          "mappableParams": "modules/organisationGet/organisationGet.mappable-params.iml.json",
+          "interface": "modules/organisationGet/organisationGet.interface.iml.json",
+          "samples": "modules/organisationGet/organisationGet.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "organisationStats": {
+        "moduleType": "action",
+        "label": "Get Organisation Stats",
+        "description": "Get organisation stats.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/organisationStats/organisationStats.communication.iml.json",
+          "mappableParams": "modules/organisationStats/organisationStats.mappable-params.iml.json",
+          "interface": "modules/organisationStats/organisationStats.interface.iml.json",
+          "samples": "modules/organisationStats/organisationStats.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "organisationListTeam": {
+        "moduleType": "search",
+        "label": "List Team Members",
+        "description": "List organisation team members.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/organisationListTeam/organisationListTeam.communication.iml.json",
+          "mappableParams": "modules/organisationListTeam/organisationListTeam.mappable-params.iml.json",
+          "interface": "modules/organisationListTeam/organisationListTeam.interface.iml.json",
+          "samples": "modules/organisationListTeam/organisationListTeam.samples.iml.json"
+        }
+      },
+      "organisationListSquads": {
+        "moduleType": "search",
+        "label": "List Squads",
+        "description": "List hiring squads.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/organisationListSquads/organisationListSquads.communication.iml.json",
+          "mappableParams": "modules/organisationListSquads/organisationListSquads.mappable-params.iml.json",
+          "interface": "modules/organisationListSquads/organisationListSquads.interface.iml.json",
+          "samples": "modules/organisationListSquads/organisationListSquads.samples.iml.json"
+        }
+      },
+      "organisationGetSquad": {
+        "moduleType": "action",
+        "label": "Get Squad",
+        "description": "Get a hiring squad.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/organisationGetSquad/organisationGetSquad.communication.iml.json",
+          "mappableParams": "modules/organisationGetSquad/organisationGetSquad.mappable-params.iml.json",
+          "interface": "modules/organisationGetSquad/organisationGetSquad.interface.iml.json",
+          "samples": "modules/organisationGetSquad/organisationGetSquad.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "organisationListSquadMembers": {
+        "moduleType": "search",
+        "label": "List Squad Members",
+        "description": "List members of a squad.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/organisationListSquadMembers/organisationListSquadMembers.communication.iml.json",
+          "mappableParams": "modules/organisationListSquadMembers/organisationListSquadMembers.mappable-params.iml.json",
+          "interface": "modules/organisationListSquadMembers/organisationListSquadMembers.interface.iml.json",
+          "samples": "modules/organisationListSquadMembers/organisationListSquadMembers.samples.iml.json"
+        }
+      },
+      "organisationAuditLog": {
+        "moduleType": "search",
+        "label": "List Audit Log",
+        "description": "List organisation audit log rows.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/organisationAuditLog/organisationAuditLog.communication.iml.json",
+          "mappableParams": "modules/organisationAuditLog/organisationAuditLog.mappable-params.iml.json",
+          "interface": "modules/organisationAuditLog/organisationAuditLog.interface.iml.json",
+          "samples": "modules/organisationAuditLog/organisationAuditLog.samples.iml.json"
+        }
+      },
+      "interviewList": {
+        "moduleType": "search",
+        "label": "List Interviews",
+        "description": "List interview rooms.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewList/interviewList.communication.iml.json",
+          "mappableParams": "modules/interviewList/interviewList.mappable-params.iml.json",
+          "interface": "modules/interviewList/interviewList.interface.iml.json",
+          "samples": "modules/interviewList/interviewList.samples.iml.json"
+        }
+      },
+      "interviewCreate": {
+        "moduleType": "action",
+        "label": "Create Interview",
+        "description": "Create an interview room and optionally email the candidate.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewCreate/interviewCreate.communication.iml.json",
+          "mappableParams": "modules/interviewCreate/interviewCreate.mappable-params.iml.json",
+          "interface": "modules/interviewCreate/interviewCreate.interface.iml.json",
+          "samples": "modules/interviewCreate/interviewCreate.samples.iml.json"
+        },
+        "actionCrud": "create"
+      },
+      "interviewBulkCreate": {
+        "moduleType": "action",
+        "label": "Bulk Create Interviews",
+        "description": "Create interview rooms for many candidates.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewBulkCreate/interviewBulkCreate.communication.iml.json",
+          "mappableParams": "modules/interviewBulkCreate/interviewBulkCreate.mappable-params.iml.json",
+          "interface": "modules/interviewBulkCreate/interviewBulkCreate.interface.iml.json",
+          "samples": "modules/interviewBulkCreate/interviewBulkCreate.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "interviewGet": {
+        "moduleType": "action",
+        "label": "Get Interview",
+        "description": "Get an interview room.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewGet/interviewGet.communication.iml.json",
+          "mappableParams": "modules/interviewGet/interviewGet.mappable-params.iml.json",
+          "interface": "modules/interviewGet/interviewGet.interface.iml.json",
+          "samples": "modules/interviewGet/interviewGet.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "interviewCancel": {
+        "moduleType": "action",
+        "label": "Cancel Interview",
+        "description": "Cancel an interview room.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewCancel/interviewCancel.communication.iml.json",
+          "mappableParams": "modules/interviewCancel/interviewCancel.mappable-params.iml.json",
+          "interface": "modules/interviewCancel/interviewCancel.interface.iml.json",
+          "samples": "modules/interviewCancel/interviewCancel.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "interviewReschedule": {
+        "moduleType": "action",
+        "label": "Reschedule Interview",
+        "description": "Reschedule an interview.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewReschedule/interviewReschedule.communication.iml.json",
+          "mappableParams": "modules/interviewReschedule/interviewReschedule.mappable-params.iml.json",
+          "interface": "modules/interviewReschedule/interviewReschedule.interface.iml.json",
+          "samples": "modules/interviewReschedule/interviewReschedule.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "interviewAnalysis": {
+        "moduleType": "action",
+        "label": "Get Interview Analysis",
+        "description": "Get interview analysis.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewAnalysis/interviewAnalysis.communication.iml.json",
+          "mappableParams": "modules/interviewAnalysis/interviewAnalysis.mappable-params.iml.json",
+          "interface": "modules/interviewAnalysis/interviewAnalysis.interface.iml.json",
+          "samples": "modules/interviewAnalysis/interviewAnalysis.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "interviewReplay": {
+        "moduleType": "action",
+        "label": "Get Interview Replay",
+        "description": "Get interview replay metadata.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewReplay/interviewReplay.communication.iml.json",
+          "mappableParams": "modules/interviewReplay/interviewReplay.mappable-params.iml.json",
+          "interface": "modules/interviewReplay/interviewReplay.interface.iml.json",
+          "samples": "modules/interviewReplay/interviewReplay.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "interviewShare": {
+        "moduleType": "action",
+        "label": "Share Interview",
+        "description": "Create a share link for an interview report.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewShare/interviewShare.communication.iml.json",
+          "mappableParams": "modules/interviewShare/interviewShare.mappable-params.iml.json",
+          "interface": "modules/interviewShare/interviewShare.interface.iml.json",
+          "samples": "modules/interviewShare/interviewShare.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "interviewAnalytics": {
+        "moduleType": "action",
+        "label": "Get Interview Analytics",
+        "description": "Get organisation interview analytics.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewAnalytics/interviewAnalytics.communication.iml.json",
+          "mappableParams": "modules/interviewAnalytics/interviewAnalytics.mappable-params.iml.json",
+          "interface": "modules/interviewAnalytics/interviewAnalytics.interface.iml.json",
+          "samples": "modules/interviewAnalytics/interviewAnalytics.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "interviewListTemplates": {
+        "moduleType": "search",
+        "label": "List Interview Templates",
+        "description": "List interview templates.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewListTemplates/interviewListTemplates.communication.iml.json",
+          "mappableParams": "modules/interviewListTemplates/interviewListTemplates.mappable-params.iml.json",
+          "interface": "modules/interviewListTemplates/interviewListTemplates.interface.iml.json",
+          "samples": "modules/interviewListTemplates/interviewListTemplates.samples.iml.json"
+        }
+      },
+      "interviewCreateTemplate": {
+        "moduleType": "action",
+        "label": "Create Interview Template",
+        "description": "Create an interview template.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewCreateTemplate/interviewCreateTemplate.communication.iml.json",
+          "mappableParams": "modules/interviewCreateTemplate/interviewCreateTemplate.mappable-params.iml.json",
+          "interface": "modules/interviewCreateTemplate/interviewCreateTemplate.interface.iml.json",
+          "samples": "modules/interviewCreateTemplate/interviewCreateTemplate.samples.iml.json"
+        },
+        "actionCrud": "create"
+      },
+      "interviewUpdateTemplate": {
+        "moduleType": "action",
+        "label": "Update Interview Template",
+        "description": "Update an interview template.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewUpdateTemplate/interviewUpdateTemplate.communication.iml.json",
+          "mappableParams": "modules/interviewUpdateTemplate/interviewUpdateTemplate.mappable-params.iml.json",
+          "interface": "modules/interviewUpdateTemplate/interviewUpdateTemplate.interface.iml.json",
+          "samples": "modules/interviewUpdateTemplate/interviewUpdateTemplate.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "interviewDeleteTemplate": {
+        "moduleType": "action",
+        "label": "Delete Interview Template",
+        "description": "Delete an interview template.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewDeleteTemplate/interviewDeleteTemplate.communication.iml.json",
+          "mappableParams": "modules/interviewDeleteTemplate/interviewDeleteTemplate.mappable-params.iml.json",
+          "interface": "modules/interviewDeleteTemplate/interviewDeleteTemplate.interface.iml.json",
+          "samples": "modules/interviewDeleteTemplate/interviewDeleteTemplate.samples.iml.json"
+        },
+        "actionCrud": "delete"
+      },
+      "interviewListOrgCases": {
+        "moduleType": "search",
+        "label": "List Interview Org Cases",
+        "description": "List org cases available for interviews.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/interviewListOrgCases/interviewListOrgCases.communication.iml.json",
+          "mappableParams": "modules/interviewListOrgCases/interviewListOrgCases.mappable-params.iml.json",
+          "interface": "modules/interviewListOrgCases/interviewListOrgCases.interface.iml.json",
+          "samples": "modules/interviewListOrgCases/interviewListOrgCases.samples.iml.json"
+        }
+      },
+      "integrationList": {
+        "moduleType": "action",
+        "label": "List Integrations",
+        "description": "List ATS integration status (no secrets).",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/integrationList/integrationList.communication.iml.json",
+          "mappableParams": "modules/integrationList/integrationList.mappable-params.iml.json",
+          "interface": "modules/integrationList/integrationList.interface.iml.json",
+          "samples": "modules/integrationList/integrationList.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "integrationConnect": {
+        "moduleType": "action",
+        "label": "Get Integration Connect URL",
+        "description": "Get the dashboard connect URL for an ATS provider.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/integrationConnect/integrationConnect.communication.iml.json",
+          "mappableParams": "modules/integrationConnect/integrationConnect.mappable-params.iml.json",
+          "interface": "modules/integrationConnect/integrationConnect.interface.iml.json",
+          "samples": "modules/integrationConnect/integrationConnect.samples.iml.json"
+        },
+        "actionCrud": "read"
+      },
+      "integrationTest": {
+        "moduleType": "action",
+        "label": "Test Integration",
+        "description": "Test an ATS connector.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/integrationTest/integrationTest.communication.iml.json",
+          "mappableParams": "modules/integrationTest/integrationTest.mappable-params.iml.json",
+          "interface": "modules/integrationTest/integrationTest.interface.iml.json",
+          "samples": "modules/integrationTest/integrationTest.samples.iml.json"
+        },
+        "actionCrud": "update"
+      },
+      "watchAssessEvent": {
+        "moduleType": "instant_trigger",
+        "label": "Watch Assess Event",
+        "description": "Triggers when Assess sends a signed webhook (candidate passed, assessment completed, interview finished, and more).",
+        "webhook": "assessEvents",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/watchAssessEvent/watchAssessEvent.communication.iml.json",
+          "mappableParams": "modules/watchAssessEvent/watchAssessEvent.mappable-params.iml.json",
+          "staticParams": "modules/watchAssessEvent/watchAssessEvent.static-params.iml.json",
+          "interface": "modules/watchAssessEvent/watchAssessEvent.interface.iml.json",
+          "samples": "modules/watchAssessEvent/watchAssessEvent.samples.iml.json"
+        }
+      },
+      "makeAnApiCall": {
+        "moduleType": "universal",
+        "label": "Make an API Call",
+        "description": "Performs an arbitrary authorized Public API call.",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "modules/makeAnApiCall/makeAnApiCall.communication.iml.json",
+          "mappableParams": "modules/makeAnApiCall/makeAnApiCall.mappable-params.iml.json",
+          "interface": "modules/makeAnApiCall/makeAnApiCall.interface.iml.json",
+          "samples": "modules/makeAnApiCall/makeAnApiCall.samples.iml.json"
+        }
+      }
+    },
+    "rpc": {
+      "listAssessmentsRpc": {
+        "label": "List Assessments",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "rpcs/listAssessmentsRpc/listAssessmentsRpc.communication.iml.json"
+        }
+      },
+      "listPipelinesRpc": {
+        "label": "List Pipelines",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "rpcs/listPipelinesRpc/listPipelinesRpc.communication.iml.json"
+        }
+      },
+      "listInvitationsRpc": {
+        "label": "List Invitations",
+        "connection": "apiKey",
+        "codeFiles": {
+          "communication": "rpcs/listInvitationsRpc/listInvitationsRpc.communication.iml.json"
+        }
+      }
+    }
+  },
+  "origins": [
+    {
+      "label": "Production",
+      "baseUrl": "https://eu2.make.com/api",
+      "appId": "praxicraft-assess",
+      "appVersion": 1,
+      "apikeyFile": ".secrets/apikey",
+      "idMapping": {
+        "connection": [
+          {
+            "local": "apiKey",
+            "remote": "apiKey"
+          }
+        ],
+        "module": [
+          {
+            "local": "assessmentList",
+            "remote": "assessmentList"
+          },
+          {
+            "local": "assessmentGet",
+            "remote": "assessmentGet"
+          },
+          {
+            "local": "assessmentCreate",
+            "remote": "assessmentCreate"
+          },
+          {
+            "local": "assessmentUpdate",
+            "remote": "assessmentUpdate"
+          },
+          {
+            "local": "assessmentDuplicate",
+            "remote": "assessmentDuplicate"
+          },
+          {
+            "local": "assessmentListResults",
+            "remote": "assessmentListResults"
+          },
+          {
+            "local": "assessmentListCases",
+            "remote": "assessmentListCases"
+          },
+          {
+            "local": "assessmentAttachCases",
+            "remote": "assessmentAttachCases"
+          },
+          {
+            "local": "assessmentReplaceCases",
+            "remote": "assessmentReplaceCases"
+          },
+          {
+            "local": "assessmentRemoveCase",
+            "remote": "assessmentRemoveCase"
+          },
+          {
+            "local": "caseList",
+            "remote": "caseList"
+          },
+          {
+            "local": "caseListPlatform",
+            "remote": "caseListPlatform"
+          },
+          {
+            "local": "caseCreate",
+            "remote": "caseCreate"
+          },
+          {
+            "local": "caseGet",
+            "remote": "caseGet"
+          },
+          {
+            "local": "caseUpdate",
+            "remote": "caseUpdate"
+          },
+          {
+            "local": "caseDelete",
+            "remote": "caseDelete"
+          },
+          {
+            "local": "invitationList",
+            "remote": "invitationList"
+          },
+          {
+            "local": "invitationInvite",
+            "remote": "invitationInvite"
+          },
+          {
+            "local": "invitationBulkInvite",
+            "remote": "invitationBulkInvite"
+          },
+          {
+            "local": "invitationGet",
+            "remote": "invitationGet"
+          },
+          {
+            "local": "invitationGetResult",
+            "remote": "invitationGetResult"
+          },
+          {
+            "local": "invitationRemind",
+            "remote": "invitationRemind"
+          },
+          {
+            "local": "invitationCancel",
+            "remote": "invitationCancel"
+          },
+          {
+            "local": "pipelineList",
+            "remote": "pipelineList"
+          },
+          {
+            "local": "pipelineGet",
+            "remote": "pipelineGet"
+          },
+          {
+            "local": "pipelineEnroll",
+            "remote": "pipelineEnroll"
+          },
+          {
+            "local": "pipelineBulkEnroll",
+            "remote": "pipelineBulkEnroll"
+          },
+          {
+            "local": "pipelineListEnrollments",
+            "remote": "pipelineListEnrollments"
+          },
+          {
+            "local": "pipelineGetEnrollment",
+            "remote": "pipelineGetEnrollment"
+          },
+          {
+            "local": "pipelineReject",
+            "remote": "pipelineReject"
+          },
+          {
+            "local": "pipelineHold",
+            "remote": "pipelineHold"
+          },
+          {
+            "local": "pipelineUnhold",
+            "remote": "pipelineUnhold"
+          },
+          {
+            "local": "webhookList",
+            "remote": "webhookList"
+          },
+          {
+            "local": "webhookCreate",
+            "remote": "webhookCreate"
+          },
+          {
+            "local": "webhookGet",
+            "remote": "webhookGet"
+          },
+          {
+            "local": "webhookUpdate",
+            "remote": "webhookUpdate"
+          },
+          {
+            "local": "webhookDelete",
+            "remote": "webhookDelete"
+          },
+          {
+            "local": "webhookListDeliveries",
+            "remote": "webhookListDeliveries"
+          },
+          {
+            "local": "webhookTest",
+            "remote": "webhookTest"
+          },
+          {
+            "local": "organisationGet",
+            "remote": "organisationGet"
+          },
+          {
+            "local": "organisationStats",
+            "remote": "organisationStats"
+          },
+          {
+            "local": "organisationListTeam",
+            "remote": "organisationListTeam"
+          },
+          {
+            "local": "organisationListSquads",
+            "remote": "organisationListSquads"
+          },
+          {
+            "local": "organisationGetSquad",
+            "remote": "organisationGetSquad"
+          },
+          {
+            "local": "organisationListSquadMembers",
+            "remote": "organisationListSquadMembers"
+          },
+          {
+            "local": "organisationAuditLog",
+            "remote": "organisationAuditLog"
+          },
+          {
+            "local": "interviewList",
+            "remote": "interviewList"
+          },
+          {
+            "local": "interviewCreate",
+            "remote": "interviewCreate"
+          },
+          {
+            "local": "interviewBulkCreate",
+            "remote": "interviewBulkCreate"
+          },
+          {
+            "local": "interviewGet",
+            "remote": "interviewGet"
+          },
+          {
+            "local": "interviewCancel",
+            "remote": "interviewCancel"
+          },
+          {
+            "local": "interviewReschedule",
+            "remote": "interviewReschedule"
+          },
+          {
+            "local": "interviewAnalysis",
+            "remote": "interviewAnalysis"
+          },
+          {
+            "local": "interviewReplay",
+            "remote": "interviewReplay"
+          },
+          {
+            "local": "interviewShare",
+            "remote": "interviewShare"
+          },
+          {
+            "local": "interviewAnalytics",
+            "remote": "interviewAnalytics"
+          },
+          {
+            "local": "interviewListTemplates",
+            "remote": "interviewListTemplates"
+          },
+          {
+            "local": "interviewCreateTemplate",
+            "remote": "interviewCreateTemplate"
+          },
+          {
+            "local": "interviewUpdateTemplate",
+            "remote": "interviewUpdateTemplate"
+          },
+          {
+            "local": "interviewDeleteTemplate",
+            "remote": "interviewDeleteTemplate"
+          },
+          {
+            "local": "interviewListOrgCases",
+            "remote": "interviewListOrgCases"
+          },
+          {
+            "local": "integrationList",
+            "remote": "integrationList"
+          },
+          {
+            "local": "integrationConnect",
+            "remote": "integrationConnect"
+          },
+          {
+            "local": "integrationTest",
+            "remote": "integrationTest"
+          },
+          {
+            "local": "watchAssessEvent",
+            "remote": "watchAssessEvent"
+          },
+          {
+            "local": "makeAnApiCall",
+            "remote": "makeAnApiCall"
+          }
+        ],
+        "function": [],
+        "rpc": [
+          {
+            "local": "listAssessmentsRpc",
+            "remote": "listAssessmentsRpc"
+          },
+          {
+            "local": "listPipelinesRpc",
+            "remote": "listPipelinesRpc"
+          },
+          {
+            "local": "listInvitationsRpc",
+            "remote": "listInvitationsRpc"
+          }
+        ],
+        "webhook": [
+          {
+            "local": "assessEvents",
+            "remote": "assessEvents"
+          }
+        ]
+      }
+    }
+  ]
+}

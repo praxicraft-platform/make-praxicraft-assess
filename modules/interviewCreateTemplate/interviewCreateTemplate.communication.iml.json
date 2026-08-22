@@ -1,0 +1,12 @@
+{
+  "url": "/interviews/templates/create/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'config_json', 'config')}}",
+    "config": "{{if(length(trim(parameters.config_json)) > 0, parseJSON(parameters.config_json), undefined)}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

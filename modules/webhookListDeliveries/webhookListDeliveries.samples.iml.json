@@ -1,0 +1,5 @@
+{
+  "id": "del_abc",
+  "status": "delivered",
+  "event_type": "candidate.passed"
+}

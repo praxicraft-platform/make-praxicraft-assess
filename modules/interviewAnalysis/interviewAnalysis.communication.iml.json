@@ -1,0 +1,7 @@
+{
+  "url": "/interviews/{{parameters.id}}/analysis/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

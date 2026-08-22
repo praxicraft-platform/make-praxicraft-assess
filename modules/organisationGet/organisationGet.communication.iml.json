@@ -1,0 +1,7 @@
+{
+  "url": "/org/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "url": "/assessments/{{parameters.slug}}/duplicate/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'slug')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "name": "event",
+    "type": "select",
+    "label": "Event",
+    "required": true,
+    "options": [
+      {
+        "label": "Assessment Started",
+        "value": "assessment.started"
+      },
+      {
+        "label": "Assessment Completed",
+        "value": "assessment.completed"
+      },
+      {
+        "label": "Candidate Violation",
+        "value": "candidate.violation"
+      },
+      {
+        "label": "Candidate Passed",
+        "value": "candidate.passed"
+      },
+      {
+        "label": "Candidate Failed",
+        "value": "candidate.failed"
+      },
+      {
+        "label": "Invitation Expired",
+        "value": "invitation.expired"
+      },
+      {
+        "label": "Pipeline Advanced",
+        "value": "pipeline.advanced"
+      },
+      {
+        "label": "Pipeline Completed",
+        "value": "pipeline.completed"
+      },
+      {
+        "label": "Pipeline Rejected",
+        "value": "pipeline.rejected"
+      },
+      {
+        "label": "Interview Scheduled",
+        "value": "interview.scheduled"
+      },
+      {
+        "label": "Interview Started",
+        "value": "interview.started"
+      },
+      {
+        "label": "Interview Completed",
+        "value": "interview.completed"
+      },
+      {
+        "label": "Interview Cancelled",
+        "value": "interview.cancelled"
+      },
+      {
+        "label": "Interview Analysis Ready",
+        "value": "interview.analysis_ready"
+      }
+    ],
+    "help": "One event per subscription. Make registers an Assess REST Hook when the scenario is activated."
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "url": "/interviews/create/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'coding_case_ids', 'org_case_ids')}}",
+    "coding_case_ids": "{{if(length(trim(parameters.coding_case_ids)) = 0, undefined, if(substring(trim(parameters.coding_case_ids), 0, 1) = '[', parseJSON(parameters.coding_case_ids), map(split(parameters.coding_case_ids, ','), trim)))}}",
+    "org_case_ids": "{{if(length(trim(parameters.org_case_ids)) = 0, undefined, if(substring(trim(parameters.org_case_ids), 0, 1) = '[', parseJSON(parameters.org_case_ids), map(split(parameters.org_case_ids, ','), trim)))}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

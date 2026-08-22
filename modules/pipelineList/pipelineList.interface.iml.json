@@ -1,0 +1,12 @@
+[
+  {
+    "name": "slug",
+    "type": "text",
+    "label": "slug"
+  },
+  {
+    "name": "name",
+    "type": "text",
+    "label": "name"
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "name": "slug",
+    "type": "text",
+    "label": "Assessment Slug",
+    "required": true
+  },
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Title",
+    "required": false
+  },
+  {
+    "name": "description",
+    "type": "text",
+    "label": "Description",
+    "required": false
+  },
+  {
+    "name": "status",
+    "type": "select",
+    "label": "Status",
+    "required": false,
+    "options": [
+      {
+        "label": "Draft",
+        "value": "draft"
+      },
+      {
+        "label": "Active",
+        "value": "active"
+      },
+      {
+        "label": "Archived",
+        "value": "archived"
+      }
+    ]
+  }
+]

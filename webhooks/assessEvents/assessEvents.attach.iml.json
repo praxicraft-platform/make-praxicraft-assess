@@ -1,0 +1,34 @@
+[
+  {
+    "url": "/webhooks/create/",
+    "method": "POST",
+    "type": "json",
+    "body": {
+      "url": "{{webhook.url}}",
+      "events": [
+        "{{parameters.event}}"
+      ],
+      "name": "Make: {{parameters.event}}"
+    },
+    "response": {
+      "temp": {
+        "id": "{{body.id}}",
+        "secret_key": "{{body.secret_key}}"
+      },
+      "data": {
+        "id": "{{body.id}}",
+        "secret_key": "{{body.secret_key}}"
+      }
+    }
+  },
+  {
+    "url": "/webhooks/{{temp.id}}/test/",
+    "method": "POST",
+    "response": {
+      "data": {
+        "id": "{{temp.id}}",
+        "secret_key": "{{temp.secret_key}}"
+      }
+    }
+  }
+]

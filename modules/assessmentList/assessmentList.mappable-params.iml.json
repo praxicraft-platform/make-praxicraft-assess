@@ -1,0 +1,17 @@
+[
+  {
+    "name": "cursor",
+    "type": "text",
+    "label": "Cursor",
+    "required": false,
+    "help": "Pagination cursor"
+  },
+  {
+    "name": "page_size",
+    "type": "number",
+    "label": "Page Size",
+    "required": false,
+    "help": "Default 20, max 100",
+    "default": 20
+  }
+]

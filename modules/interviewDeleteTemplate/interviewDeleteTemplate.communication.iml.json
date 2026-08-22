@@ -1,0 +1,11 @@
+{
+  "url": "/interviews/templates/{{parameters.id}}/delete/",
+  "method": "DELETE",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'id')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

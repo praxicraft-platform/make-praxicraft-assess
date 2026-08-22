@@ -1,0 +1,8 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Webhook ID",
+    "required": true
+  }
+]

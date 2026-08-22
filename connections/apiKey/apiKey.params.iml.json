@@ -1,0 +1,19 @@
+[
+  {
+    "name": "apiKey",
+    "type": "password",
+    "label": "API Key",
+    "help": "Assess → Developer → API Keys. Keys start with ct_live_ or ct_test_.",
+    "required": true,
+    "editable": true
+  },
+  {
+    "name": "baseUrl",
+    "type": "url",
+    "label": "Base URL",
+    "help": "Leave as https://assess.praxicraft.com unless you use a custom host.",
+    "required": false,
+    "editable": true,
+    "default": "https://assess.praxicraft.com"
+  }
+]

@@ -1,0 +1,118 @@
+[
+  {
+    "label": "Assessments",
+    "modules": [
+      "assessmentList",
+      "assessmentGet",
+      "assessmentCreate",
+      "assessmentUpdate",
+      "assessmentDuplicate",
+      "assessmentListResults",
+      "assessmentListCases",
+      "assessmentAttachCases",
+      "assessmentReplaceCases",
+      "assessmentRemoveCase"
+    ]
+  },
+  {
+    "label": "Cases",
+    "modules": [
+      "caseList",
+      "caseListPlatform",
+      "caseCreate",
+      "caseGet",
+      "caseUpdate",
+      "caseDelete"
+    ]
+  },
+  {
+    "label": "Invitations",
+    "modules": [
+      "invitationList",
+      "invitationInvite",
+      "invitationBulkInvite",
+      "invitationGet",
+      "invitationGetResult",
+      "invitationRemind",
+      "invitationCancel"
+    ]
+  },
+  {
+    "label": "Pipelines",
+    "modules": [
+      "pipelineList",
+      "pipelineGet",
+      "pipelineEnroll",
+      "pipelineBulkEnroll",
+      "pipelineListEnrollments",
+      "pipelineGetEnrollment",
+      "pipelineReject",
+      "pipelineHold",
+      "pipelineUnhold"
+    ]
+  },
+  {
+    "label": "Webhooks",
+    "modules": [
+      "webhookList",
+      "webhookCreate",
+      "webhookGet",
+      "webhookUpdate",
+      "webhookDelete",
+      "webhookListDeliveries",
+      "webhookTest"
+    ]
+  },
+  {
+    "label": "Organisation",
+    "modules": [
+      "organisationGet",
+      "organisationStats",
+      "organisationListTeam",
+      "organisationListSquads",
+      "organisationGetSquad",
+      "organisationListSquadMembers",
+      "organisationAuditLog"
+    ]
+  },
+  {
+    "label": "Interviews",
+    "modules": [
+      "interviewList",
+      "interviewCreate",
+      "interviewBulkCreate",
+      "interviewGet",
+      "interviewCancel",
+      "interviewReschedule",
+      "interviewAnalysis",
+      "interviewReplay",
+      "interviewShare",
+      "interviewAnalytics",
+      "interviewListTemplates",
+      "interviewCreateTemplate",
+      "interviewUpdateTemplate",
+      "interviewDeleteTemplate",
+      "interviewListOrgCases"
+    ]
+  },
+  {
+    "label": "Integrations",
+    "modules": [
+      "integrationList",
+      "integrationConnect",
+      "integrationTest"
+    ]
+  },
+  {
+    "label": "Triggers",
+    "modules": [
+      "watchAssessEvent"
+    ]
+  },
+  {
+    "label": "Advanced",
+    "modules": [
+      "makeAnApiCall"
+    ]
+  }
+]

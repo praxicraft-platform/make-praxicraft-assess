@@ -1,0 +1,33 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Webhook ID",
+    "required": true
+  },
+  {
+    "name": "url",
+    "type": "url",
+    "label": "URL",
+    "required": false
+  },
+  {
+    "name": "events",
+    "type": "text",
+    "label": "Events",
+    "required": false,
+    "help": "Comma-separated event names, or a JSON array"
+  },
+  {
+    "name": "is_active",
+    "type": "boolean",
+    "label": "Is Active",
+    "required": false
+  },
+  {
+    "name": "name",
+    "type": "text",
+    "label": "Name",
+    "required": false
+  }
+]

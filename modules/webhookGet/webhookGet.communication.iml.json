@@ -1,0 +1,7 @@
+{
+  "url": "/webhooks/{{parameters.id}}/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

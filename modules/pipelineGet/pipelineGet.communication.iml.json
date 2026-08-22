@@ -1,0 +1,7 @@
+{
+  "url": "/pipelines/{{parameters.slug}}/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

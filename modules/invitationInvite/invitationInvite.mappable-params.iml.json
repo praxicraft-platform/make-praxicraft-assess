@@ -1,0 +1,42 @@
+[
+  {
+    "name": "slug",
+    "type": "select",
+    "label": "Assessment",
+    "required": true,
+    "options": "rpc://listAssessmentsRpc"
+  },
+  {
+    "name": "email",
+    "type": "email",
+    "label": "Email",
+    "required": true
+  },
+  {
+    "name": "name",
+    "type": "text",
+    "label": "Name",
+    "required": false
+  },
+  {
+    "name": "send_email",
+    "type": "boolean",
+    "label": "Send Email",
+    "required": false,
+    "default": false
+  },
+  {
+    "name": "expires_days",
+    "type": "number",
+    "label": "Expires (Days)",
+    "required": false,
+    "default": 7
+  },
+  {
+    "name": "external_id",
+    "type": "text",
+    "label": "External ID",
+    "required": false,
+    "help": "ATS candidate id. Retries with the same id return the existing invite."
+  }
+]

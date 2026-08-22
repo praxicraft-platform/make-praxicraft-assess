@@ -1,0 +1,13 @@
+{
+  "url": "/{{parameters.path}}",
+  "method": "{{parameters.method}}",
+  "qs": "{{parameters.query}}",
+  "body": "{{parameters.body}}",
+  "type": "json",
+  "response": {
+    "output": {
+      "statusCode": "{{statusCode}}",
+      "body": "{{body}}"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "invited",
+    "type": "text",
+    "label": "invited"
+  },
+  {
+    "name": "skipped",
+    "type": "text",
+    "label": "skipped"
+  }
+]

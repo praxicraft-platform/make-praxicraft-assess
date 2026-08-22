@@ -1,0 +1,11 @@
+{
+  "url": "/integrations/{{parameters.provider}}/test/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'provider')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

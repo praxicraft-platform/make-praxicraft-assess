@@ -1,0 +1,7 @@
+# Changelog
+
+## 0.1.0
+
+- Initial Make Custom App: Bearer API key connection, Public API parity (~64 modules), Watch Assess Event instant trigger, RPCs, Make an API Call.
+- Hardening: `omit()` bodies (no empty optional fields), list coerce (JSON or comma-separated), search `results` + `next` pagination, webhook attach stores `id`/`secret_key` then `POST …/test/`, detach ignores 404, RPC selects on invite/pipeline slugs, resilient `deploy-to-make.js`.
+- CI + publish workflow with optional Make deploy via `make-cli`.

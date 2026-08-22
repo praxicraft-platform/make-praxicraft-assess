@@ -1,0 +1,23 @@
+[
+  {
+    "name": "slug",
+    "type": "select",
+    "label": "Pipeline",
+    "required": true,
+    "options": "rpc://listPipelinesRpc"
+  },
+  {
+    "name": "candidates",
+    "type": "text",
+    "label": "Candidates JSON",
+    "required": true,
+    "help": "Required JSON array: [{\"email\":\"a@b.com\",\"name\":\"Ada\"}]"
+  },
+  {
+    "name": "send_email",
+    "type": "boolean",
+    "label": "Send Email",
+    "required": false,
+    "default": false
+  }
+]

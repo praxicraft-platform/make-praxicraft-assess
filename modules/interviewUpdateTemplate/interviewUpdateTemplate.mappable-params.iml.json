@@ -1,0 +1,20 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Template ID",
+    "required": true
+  },
+  {
+    "name": "name",
+    "type": "text",
+    "label": "Name",
+    "required": false
+  },
+  {
+    "name": "config_json",
+    "type": "text",
+    "label": "Config JSON",
+    "required": false
+  }
+]

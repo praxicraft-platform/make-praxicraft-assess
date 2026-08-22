@@ -1,0 +1,17 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "id"
+  },
+  {
+    "name": "status",
+    "type": "text",
+    "label": "status"
+  },
+  {
+    "name": "event_type",
+    "type": "text",
+    "label": "event_type"
+  }
+]

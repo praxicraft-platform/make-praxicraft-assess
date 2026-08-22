@@ -1,0 +1,121 @@
+name: Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "makecomapp.json"
+      - "general/**"
+      - "connections/**"
+      - "modules/**"
+      - "webhooks/**"
+      - "rpcs/**"
+      - "scripts/**"
+      - "package.json"
+      - ".github/workflows/publish.yml"
+
+concurrency:
+  group: publish-make
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    if: |
+      github.event_name == 'workflow_dispatch' || (
+        github.event.head_commit != null &&
+        !startsWith(github.event.head_commit.message, 'chore(release):') &&
+        !contains(github.event.head_commit.message, '[skip release]')
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm test
+
+  publish:
+    needs: test
+    if: |
+      github.event_name == 'workflow_dispatch' || (
+        github.event.head_commit != null &&
+        !startsWith(github.event.head_commit.message, 'chore(release):') &&
+        !contains(github.event.head_commit.message, '[skip release]')
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Auto-bump patch version and CHANGELOG
+        id: version
+        run: |
+          set -euo pipefail
+          git fetch --tags --force
+          LATEST="$(git describe --tags --abbrev=0 2>/dev/null || echo 'v0.0.0')"
+          RAW="${LATEST#v}"
+          IFS=. read -r MAJOR MINOR PATCH <<<"$RAW"
+          MAJOR="${MAJOR:-0}"; MINOR="${MINOR:-0}"; PATCH="${PATCH:-0}"
+          PATCH=$((PATCH + 1))
+          VERSION="${MAJOR}.${MINOR}.${PATCH}"
+          TAG="v${VERSION}"
+          NOTES="$(git log "${LATEST}..HEAD" --pretty=format:'- %s' --no-merges 2>/dev/null | sed '/^chore(release):/d' || true)"
+          if [ -z "$NOTES" ]; then NOTES="- Maintenance release."; fi
+          export VERSION NOTES
+          node <<'NODE'
+          const fs = require("fs");
+          const v = process.env.VERSION;
+          const notes = process.env.NOTES;
+          const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+          pkg.version = v;
+          fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2) + "\n");
+          let body = fs.existsSync("CHANGELOG.md") ? fs.readFileSync("CHANGELOG.md", "utf8") : "# Changelog\n\n";
+          const idx = body.indexOf("## ");
+          const prior = idx >= 0 ? body.slice(idx) : "";
+          fs.writeFileSync("CHANGELOG.md", `# Changelog\n\n## ${v}\n\n${notes}\n\n${prior}`);
+          NODE
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json CHANGELOG.md
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(release): ${TAG}"
+            git push origin HEAD:main
+          fi
+          {
+            echo "version=${VERSION}"
+            echo "tag=${TAG}"
+          } >> "$GITHUB_OUTPUT"
+      - name: Create and push tag
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.version.outputs.tag }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git rev-parse "$TAG" >/dev/null 2>&1; then echo "Tag exists"; exit 0; fi
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
+      - name: Deploy to Make
+        env:
+          MAKE_API_KEY: ${{ secrets.MAKE_API_KEY }}
+          MAKE_ZONE: ${{ secrets.MAKE_ZONE }}
+          MAKE_APP_NAME: ${{ secrets.MAKE_APP_NAME }}
+          MAKE_APP_VERSION: ${{ secrets.MAKE_APP_VERSION }}
+        run: node scripts/deploy-to-make.js
+      - name: Package archive
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          git archive --format=zip --prefix="make-praxicraft-assess-${VERSION}/" -o "make-praxicraft-assess-${VERSION}.zip" HEAD
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.tag }}
+          generate_release_notes: true
+          files: |
+            make-praxicraft-assess-*.zip

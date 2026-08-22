@@ -1,0 +1,12 @@
+{
+  "url": "/webhooks/{{webhook.id}}/",
+  "method": "DELETE",
+  "response": {
+    "error": {
+      "404": {
+        "type": "Ignore",
+        "message": "Webhook already deleted"
+      }
+    }
+  }
+}

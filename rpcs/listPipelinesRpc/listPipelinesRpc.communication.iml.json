@@ -1,0 +1,12 @@
+{
+  "url": "/pipelines/",
+  "method": "GET",
+  "qs": {
+    "page_size": 100
+  },
+  "response": {
+    "label": "{{item.name}}",
+    "value": "{{item.slug}}",
+    "iterate": "{{body.results}}"
+  }
+}

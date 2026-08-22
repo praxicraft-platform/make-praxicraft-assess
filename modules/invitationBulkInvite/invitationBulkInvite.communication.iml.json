@@ -1,0 +1,12 @@
+{
+  "url": "/assessments/{{parameters.slug}}/invites/bulk/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'slug', 'candidates')}}",
+    "candidates": "{{if(length(trim(parameters.candidates)) > 0, parseJSON(parameters.candidates), undefined)}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

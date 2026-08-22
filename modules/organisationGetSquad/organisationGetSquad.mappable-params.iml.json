@@ -1,0 +1,8 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Squad ID",
+    "required": true
+  }
+]

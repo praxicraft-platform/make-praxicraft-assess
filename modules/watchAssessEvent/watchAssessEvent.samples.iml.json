@@ -1,0 +1,11 @@
+{
+  "id": "evt_sample",
+  "event": "candidate.passed",
+  "created_at": "2026-01-15T12:00:00Z",
+  "data": {
+    "invite_token": "inv_abc",
+    "email": "ada@example.com",
+    "passed": true,
+    "overall_score": 82
+  }
+}

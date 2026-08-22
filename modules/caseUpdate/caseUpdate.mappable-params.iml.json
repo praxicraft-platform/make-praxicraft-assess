@@ -1,0 +1,26 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Case ID",
+    "required": true
+  },
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Title",
+    "required": false
+  },
+  {
+    "name": "question",
+    "type": "text",
+    "label": "Question",
+    "required": false
+  },
+  {
+    "name": "description",
+    "type": "text",
+    "label": "Description",
+    "required": false
+  }
+]

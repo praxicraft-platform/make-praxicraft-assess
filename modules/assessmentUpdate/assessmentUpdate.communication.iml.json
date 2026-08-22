@@ -1,0 +1,11 @@
+{
+  "url": "/assessments/{{parameters.slug}}/update/",
+  "method": "PATCH",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'slug')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

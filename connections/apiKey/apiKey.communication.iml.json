@@ -1,0 +1,26 @@
+{
+  "url": "{{ifempty(parameters.baseUrl, 'https://assess.praxicraft.com')}}/api/v1/public/org/",
+  "method": "GET",
+  "headers": {
+    "Authorization": "Bearer {{parameters.apiKey}}",
+    "Accept": "application/json"
+  },
+  "response": {
+    "data": {
+      "apiKey": "{{parameters.apiKey}}",
+      "baseUrl": "{{ifempty(parameters.baseUrl, 'https://assess.praxicraft.com')}}"
+    },
+    "metadata": {
+      "type": "text",
+      "value": "{{ifempty(body.name, body.slug)}}"
+    },
+    "error": {
+      "message": "[{{statusCode}}] {{ifempty(body.message, 'Connection failed')}}"
+    }
+  },
+  "log": {
+    "sanitize": [
+      "request.headers.authorization"
+    ]
+  }
+}

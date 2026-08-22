@@ -1,0 +1,11 @@
+{
+  "url": "/assessments/create/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{parameters}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

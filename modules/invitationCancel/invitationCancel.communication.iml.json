@@ -1,0 +1,11 @@
+{
+  "url": "/invites/{{parameters.token}}/",
+  "method": "DELETE",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'token')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

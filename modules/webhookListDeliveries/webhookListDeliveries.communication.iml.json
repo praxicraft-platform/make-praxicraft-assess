@@ -1,0 +1,17 @@
+{
+  "url": "/webhooks/{{parameters.id}}/deliveries/",
+  "method": "GET",
+  "qs": {
+    "{{...}}": "{{omit(parameters, 'id')}}"
+  },
+  "response": {
+    "output": "{{item}}",
+    "iterate": "{{if(body.results, body.results, emptyarray)}}",
+    "limit": "{{ifempty(parameters.page_size, 20)}}"
+  },
+  "pagination": {
+    "url": "{{body.next}}",
+    "method": "GET",
+    "condition": "{{if(body.next, true, false)}}"
+  }
+}

@@ -1,0 +1,8 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Enrollment ID",
+    "required": true
+  }
+]

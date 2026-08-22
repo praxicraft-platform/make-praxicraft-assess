@@ -1,0 +1,11 @@
+{
+  "url": "/pipelines/enrollments/{{parameters.id}}/hold/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'id')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

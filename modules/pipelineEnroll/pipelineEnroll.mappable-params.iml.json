@@ -1,0 +1,28 @@
+[
+  {
+    "name": "slug",
+    "type": "select",
+    "label": "Pipeline",
+    "required": true,
+    "options": "rpc://listPipelinesRpc"
+  },
+  {
+    "name": "email",
+    "type": "email",
+    "label": "Email",
+    "required": true
+  },
+  {
+    "name": "name",
+    "type": "text",
+    "label": "Name",
+    "required": false
+  },
+  {
+    "name": "send_email",
+    "type": "boolean",
+    "label": "Send Email",
+    "required": false,
+    "default": false
+  }
+]

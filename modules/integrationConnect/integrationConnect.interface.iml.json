@@ -1,0 +1,7 @@
+[
+  {
+    "name": "connect_url",
+    "type": "text",
+    "label": "connect_url"
+  }
+]

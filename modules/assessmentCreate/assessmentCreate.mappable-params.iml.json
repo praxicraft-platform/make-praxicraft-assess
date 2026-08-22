@@ -1,0 +1,34 @@
+[
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Title",
+    "required": true
+  },
+  {
+    "name": "description",
+    "type": "text",
+    "label": "Description",
+    "required": false
+  },
+  {
+    "name": "time_limit_minutes",
+    "type": "number",
+    "label": "Time Limit (Minutes)",
+    "required": false,
+    "default": 60
+  },
+  {
+    "name": "passing_score",
+    "type": "number",
+    "label": "Passing Score",
+    "required": false,
+    "default": 70
+  },
+  {
+    "name": "team_id",
+    "type": "text",
+    "label": "Squad ID",
+    "required": false
+  }
+]

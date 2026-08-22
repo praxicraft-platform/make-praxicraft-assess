@@ -1,0 +1,7 @@
+{
+  "url": "/interviews/{{parameters.id}}/replay/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

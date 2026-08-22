@@ -1,0 +1,11 @@
+{
+  "url": "/interviews/{{parameters.id}}/reschedule/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'id')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

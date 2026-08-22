@@ -1,0 +1,31 @@
+{
+  "baseUrl": "{{connection.baseUrl}}/api/v1/public",
+  "headers": {
+    "Authorization": "Bearer {{connection.apiKey}}",
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+  "response": {
+    "error": {
+      "401": {
+        "type": "ConnectionError",
+        "message": "Invalid Assess API key. Create a key under Assess → Developer → API Keys."
+      },
+      "403": {
+        "type": "RuntimeError",
+        "message": "Forbidden — check API key scopes."
+      },
+      "429": {
+        "type": "RateLimitError",
+        "message": "Rate limit exceeded. Wait and retry."
+      },
+      "message": "[{{statusCode}}] {{ifempty(body.message, ifempty(body.error.message, body.error))}}",
+      "type": "RuntimeError"
+    }
+  },
+  "log": {
+    "sanitize": [
+      "request.headers.authorization"
+    ]
+  }
+}

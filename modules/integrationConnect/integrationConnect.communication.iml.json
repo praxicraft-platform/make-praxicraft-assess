@@ -1,0 +1,7 @@
+{
+  "url": "/integrations/{{parameters.provider}}/connect/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

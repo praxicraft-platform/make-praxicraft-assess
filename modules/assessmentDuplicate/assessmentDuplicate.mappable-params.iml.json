@@ -1,0 +1,8 @@
+[
+  {
+    "name": "slug",
+    "type": "text",
+    "label": "Assessment Slug",
+    "required": true
+  }
+]

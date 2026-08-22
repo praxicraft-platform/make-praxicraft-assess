@@ -1,0 +1,21 @@
+[
+  {
+    "name": "slug",
+    "type": "text",
+    "label": "Assessment Slug",
+    "required": true
+  },
+  {
+    "name": "cursor",
+    "type": "text",
+    "label": "Cursor",
+    "required": false
+  },
+  {
+    "name": "page_size",
+    "type": "number",
+    "label": "Page Size",
+    "required": false,
+    "default": 20
+  }
+]

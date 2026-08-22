@@ -1,0 +1,20 @@
+{
+  "name": "make-praxicraft-assess",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Make.com Custom App for Praxicraft Assess — same Public API surface as the Zapier app and n8n node.",
+  "homepage": "https://docs.praxicraft.com/make",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/praxicraft-platform/make-praxicraft-assess.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "generate": "node scripts/generate-modules.js",
+    "test": "node --test tests/*.test.js",
+    "deploy": "node scripts/deploy-to-make.js"
+  }
+}

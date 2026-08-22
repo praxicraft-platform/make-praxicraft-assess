@@ -1,0 +1,12 @@
+[
+  {
+    "name": "score",
+    "type": "number",
+    "label": "score"
+  },
+  {
+    "name": "hire_recommendation",
+    "type": "text",
+    "label": "hire_recommendation"
+  }
+]

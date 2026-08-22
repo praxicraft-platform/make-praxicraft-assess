@@ -1,0 +1,7 @@
+{
+  "url": "/pipelines/enrollments/{{parameters.id}}/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

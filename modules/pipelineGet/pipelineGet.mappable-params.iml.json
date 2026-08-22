@@ -1,0 +1,9 @@
+[
+  {
+    "name": "slug",
+    "type": "select",
+    "label": "Pipeline",
+    "required": true,
+    "options": "rpc://listPipelinesRpc"
+  }
+]

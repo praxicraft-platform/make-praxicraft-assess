@@ -1,0 +1,13 @@
+{
+  "respond": {
+    "status": 200,
+    "type": "json",
+    "body": {
+      "ok": true
+    }
+  },
+  "response": {
+    "output": "{{body}}",
+    "condition": "{{if(body.event = 'webhook.test', false, true)}}"
+  }
+}

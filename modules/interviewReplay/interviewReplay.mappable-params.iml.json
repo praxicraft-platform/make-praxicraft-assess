@@ -1,0 +1,8 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Interview ID",
+    "required": true
+  }
+]

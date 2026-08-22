@@ -1,0 +1,15 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Interview ID",
+    "required": true
+  },
+  {
+    "name": "expires_days",
+    "type": "number",
+    "label": "Expires (Days)",
+    "required": false,
+    "default": 14
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "name",
+    "type": "text",
+    "label": "name"
+  },
+  {
+    "name": "plan",
+    "type": "text",
+    "label": "plan"
+  },
+  {
+    "name": "invites_remaining",
+    "type": "number",
+    "label": "invites_remaining"
+  }
+]

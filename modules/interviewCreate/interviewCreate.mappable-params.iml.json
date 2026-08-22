@@ -1,0 +1,88 @@
+[
+  {
+    "name": "candidate_email",
+    "type": "email",
+    "label": "Candidate Email",
+    "required": true
+  },
+  {
+    "name": "candidate_name",
+    "type": "text",
+    "label": "Candidate Name",
+    "required": false
+  },
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Title",
+    "required": false,
+    "default": "AI Screening Interview"
+  },
+  {
+    "name": "interviewer_mode",
+    "type": "select",
+    "label": "Interviewer Mode",
+    "required": false,
+    "default": "ai_only",
+    "options": [
+      {
+        "label": "AI Only",
+        "value": "ai_only"
+      },
+      {
+        "label": "Human Only",
+        "value": "human_only"
+      },
+      {
+        "label": "Hybrid",
+        "value": "hybrid"
+      }
+    ]
+  },
+  {
+    "name": "interview_type",
+    "type": "text",
+    "label": "Interview Type",
+    "required": false,
+    "default": "mixed"
+  },
+  {
+    "name": "job_description",
+    "type": "text",
+    "label": "Job Description",
+    "required": false
+  },
+  {
+    "name": "resume_text",
+    "type": "text",
+    "label": "Resume Text",
+    "required": false
+  },
+  {
+    "name": "send_invite",
+    "type": "boolean",
+    "label": "Send Invite",
+    "required": false,
+    "default": true
+  },
+  {
+    "name": "scheduled_at",
+    "type": "date",
+    "label": "Scheduled At",
+    "required": false
+  },
+  {
+    "name": "coding_case_ids",
+    "type": "text",
+    "label": "Coding Case IDs",
+    "required": false,
+    "help": "Comma-separated UUIDs or JSON array"
+  },
+  {
+    "name": "org_case_ids",
+    "type": "text",
+    "label": "Org Case IDs",
+    "required": false,
+    "help": "Comma-separated UUIDs or JSON array"
+  }
+]

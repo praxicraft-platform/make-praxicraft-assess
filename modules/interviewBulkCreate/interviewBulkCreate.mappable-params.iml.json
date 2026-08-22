@@ -1,0 +1,41 @@
+[
+  {
+    "name": "candidates",
+    "type": "text",
+    "label": "Candidates JSON",
+    "required": true,
+    "help": "Required JSON array: [{\"email\":\"a@b.com\",\"name\":\"Ada\"}]"
+  },
+  {
+    "name": "title",
+    "type": "text",
+    "label": "Title",
+    "required": false
+  },
+  {
+    "name": "interviewer_mode",
+    "type": "text",
+    "label": "Interviewer Mode",
+    "required": false,
+    "default": "ai_only"
+  },
+  {
+    "name": "job_description",
+    "type": "text",
+    "label": "Job Description",
+    "required": false
+  },
+  {
+    "name": "resume_text",
+    "type": "text",
+    "label": "Resume Text",
+    "required": false
+  },
+  {
+    "name": "send_invite",
+    "type": "boolean",
+    "label": "Send Invite",
+    "required": false,
+    "default": true
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "invite_token",
+    "type": "text",
+    "label": "invite_token"
+  },
+  {
+    "name": "overall_score",
+    "type": "number",
+    "label": "overall_score"
+  },
+  {
+    "name": "passed",
+    "type": "boolean",
+    "label": "passed"
+  }
+]

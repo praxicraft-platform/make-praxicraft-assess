@@ -1,0 +1,7 @@
+{
+  "url": "/integrations/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

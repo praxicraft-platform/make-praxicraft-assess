@@ -1,0 +1,22 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "id"
+  },
+  {
+    "name": "event",
+    "type": "text",
+    "label": "event"
+  },
+  {
+    "name": "created_at",
+    "type": "text",
+    "label": "created_at"
+  },
+  {
+    "name": "data",
+    "type": "collection",
+    "label": "data"
+  }
+]

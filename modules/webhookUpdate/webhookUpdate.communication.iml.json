@@ -1,0 +1,12 @@
+{
+  "url": "/webhooks/{{parameters.id}}/",
+  "method": "PATCH",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'id', 'events')}}",
+    "events": "{{if(length(trim(parameters.events)) = 0, undefined, if(substring(trim(parameters.events), 0, 1) = '[', parseJSON(parameters.events), map(split(parameters.events, ','), trim)))}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

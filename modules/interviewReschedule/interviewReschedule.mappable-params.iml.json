@@ -1,0 +1,14 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Interview ID",
+    "required": true
+  },
+  {
+    "name": "scheduled_at",
+    "type": "date",
+    "label": "Scheduled At",
+    "required": true
+  }
+]

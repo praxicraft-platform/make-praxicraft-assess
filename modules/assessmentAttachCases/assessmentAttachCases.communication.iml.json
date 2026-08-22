@@ -1,0 +1,12 @@
+{
+  "url": "/assessments/{{parameters.slug}}/cases/attach/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'slug', 'case_ids')}}",
+    "case_ids": "{{if(length(trim(parameters.case_ids)) = 0, undefined, if(substring(trim(parameters.case_ids), 0, 1) = '[', parseJSON(parameters.case_ids), map(split(parameters.case_ids, ','), trim)))}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

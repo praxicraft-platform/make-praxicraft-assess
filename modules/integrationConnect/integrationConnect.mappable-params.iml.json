@@ -1,0 +1,30 @@
+[
+  {
+    "name": "provider",
+    "type": "select",
+    "label": "ATS Provider",
+    "required": true,
+    "options": [
+      {
+        "label": "Greenhouse",
+        "value": "greenhouse"
+      },
+      {
+        "label": "Lever",
+        "value": "lever"
+      },
+      {
+        "label": "Ashby",
+        "value": "ashby"
+      },
+      {
+        "label": "Workday",
+        "value": "workday"
+      },
+      {
+        "label": "BambooHR",
+        "value": "bamboohr"
+      }
+    ]
+  }
+]

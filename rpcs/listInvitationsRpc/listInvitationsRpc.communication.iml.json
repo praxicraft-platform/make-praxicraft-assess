@@ -1,0 +1,12 @@
+{
+  "url": "/invites/",
+  "method": "GET",
+  "qs": {
+    "page_size": 100
+  },
+  "response": {
+    "label": "{{item.email}}",
+    "value": "{{item.invite_token}}",
+    "iterate": "{{body.results}}"
+  }
+}

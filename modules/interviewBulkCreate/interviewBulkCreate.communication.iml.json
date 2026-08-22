@@ -1,0 +1,12 @@
+{
+  "url": "/interviews/bulk/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'candidates')}}",
+    "candidates": "{{if(length(trim(parameters.candidates)) > 0, parseJSON(parameters.candidates), undefined)}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

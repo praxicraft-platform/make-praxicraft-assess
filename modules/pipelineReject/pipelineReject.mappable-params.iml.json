@@ -1,0 +1,14 @@
+[
+  {
+    "name": "id",
+    "type": "text",
+    "label": "Enrollment ID",
+    "required": true
+  },
+  {
+    "name": "reason",
+    "type": "text",
+    "label": "Reason",
+    "required": false
+  }
+]

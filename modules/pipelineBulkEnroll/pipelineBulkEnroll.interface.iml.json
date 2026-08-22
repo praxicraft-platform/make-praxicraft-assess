@@ -1,0 +1,12 @@
+[
+  {
+    "name": "enrolled",
+    "type": "text",
+    "label": "enrolled"
+  },
+  {
+    "name": "skipped",
+    "type": "text",
+    "label": "skipped"
+  }
+]

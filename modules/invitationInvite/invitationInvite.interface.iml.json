@@ -1,0 +1,17 @@
+[
+  {
+    "name": "invite_token",
+    "type": "text",
+    "label": "invite_token"
+  },
+  {
+    "name": "invite_url",
+    "type": "text",
+    "label": "invite_url"
+  },
+  {
+    "name": "email",
+    "type": "text",
+    "label": "email"
+  }
+]
