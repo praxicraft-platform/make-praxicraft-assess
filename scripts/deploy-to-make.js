@@ -288,8 +288,7 @@ function ensureModule(appName, version, modName, meta, connectionName, webhookNa
   }
 }
 
-function summarizeApps(payload) {
-  const rows = [];
+function listAppRows(payload) {
   const arr = Array.isArray(payload)
     ? payload
     : Array.isArray(payload?.apps)
@@ -299,20 +298,28 @@ function summarizeApps(payload) {
         : Array.isArray(payload?.data)
           ? payload.data
           : [];
-  for (const a of arr) {
-    if (!a || typeof a !== "object") continue;
-    const n = a.name || a.appName;
-    const v = a.version ?? a.appVersion;
-    if (n != null) rows.push(`${n}@${v == null ? "?" : v}`);
-  }
-  return rows;
+  return arr
+    .filter((a) => a && typeof a === "object" && (a.name || a.appName))
+    .map((a) => ({
+      name: String(a.name || a.appName),
+      version: String(a.version ?? a.appVersion ?? "1"),
+      label: String(a.label || a.appLabel || ""),
+    }));
+}
+
+function summarizeApps(payload) {
+  return listAppRows(payload).map((a) => `${a.name}@${a.version}`);
 }
 
 /**
- * Fail fast when MAKE_APP_NAME / MAKE_APP_VERSION / MAKE_ZONE don't match a real Custom App.
- * Set MAKE_APP_CREATE=1 to create praxicraft-assess-style app when missing.
+ * Resolve MAKE_APP_NAME / MAKE_APP_VERSION against apps visible to the API key.
+ * Make often suffixes the Name (e.g. praxicraft-assess-5nwwt8) even when you asked for praxicraft-assess.
+ * Returns { name, version }.
  */
-function ensureApp(name, version) {
+function ensureApp(requestedName, requestedVersion) {
+  let name = requestedName;
+  let version = requestedVersion;
+
   if (/\./.test(version) || /^v/i.test(version)) {
     console.warn(
       `WARNING: MAKE_APP_VERSION="${version}" looks like npm/semver. Make Custom App versions are usually integers like "1".`,
@@ -325,14 +332,41 @@ function ensureApp(name, version) {
   );
   if (got.status === 0) {
     console.log(`found app ${name}@${version}`);
-    return;
+    return { name, version };
   }
 
   const listed = parseJsonLoose(
     runMake(["sdk-apps", "list"], { allowFail: true }).stdout,
   );
-  const known = summarizeApps(listed);
-  console.error(`Unknown Make app ${name}@${version} in zone ${process.env.MAKE_ZONE}.`);
+  const rows = listAppRows(listed);
+  const known = rows.map((a) => `${a.name}@${a.version}`);
+
+  // Auto-resolve: Make appends a suffix to the Name; Label stays "Praxicraft Assess".
+  let match =
+    rows.find((a) => a.name === name && a.version === version) ||
+    rows.find((a) => a.name === name) ||
+    rows.find((a) => a.name.startsWith(`${name}-`)) ||
+    rows.find((a) => a.label.toLowerCase() === "praxicraft assess") ||
+    (rows.length === 1 ? rows[0] : null);
+
+  if (match) {
+    console.warn(
+      `MAKE_APP_NAME/VERSION ${name}@${version} not found; using listed app ${match.name}@${match.version}` +
+        (match.label ? ` (label: ${match.label})` : ""),
+    );
+    name = match.name;
+    version = match.version;
+    const again = runMake(
+      ["sdk-apps", "get", `--name=${name}`, `--version=${version}`],
+      { allowFail: true },
+    );
+    if (again.status === 0) {
+      console.log(`found app ${name}@${version}`);
+      return { name, version };
+    }
+  }
+
+  console.error(`Unknown Make app ${requestedName}@${requestedVersion} in zone ${process.env.MAKE_ZONE}.`);
   if (known.length) {
     console.error(`Apps visible to this API key:\n  ${known.join("\n  ")}`);
   } else {
@@ -343,10 +377,9 @@ function ensureApp(name, version) {
   console.error(
     [
       "Fix GitHub Actions secrets:",
-      "  MAKE_APP_NAME     = exact Name from Make UI (e.g. praxicraft-assess), not the Label",
-      "  MAKE_APP_VERSION  = Make version integer (usually 1) — NOT package.json / v0.0.2",
-      "  MAKE_ZONE         = host from your Make URL (e.g. eu2.make.com)",
-      "Or create once: npx @makehq/cli@1.4.0 sdk-apps create --name=praxicraft-assess --label='Praxicraft Assess' --theme=#0D41FF --language=en --audience=global --private",
+      "  MAKE_ZONE         = host from browser URL (your org is on eu1.make.com → eu1.make.com)",
+      "  MAKE_APP_NAME     = exact Name from `sdk-apps list` (often ends with a suffix like -5nwwt8), NOT the Label",
+      "  MAKE_APP_VERSION  = version integer from that list row (usually 1) — NOT package.json / v0.0.2",
       "Or re-run deploy with MAKE_APP_CREATE=1 to create automatically.",
     ].join("\n"),
   );
@@ -356,7 +389,7 @@ function ensureApp(name, version) {
     runMake([
       "sdk-apps",
       "create",
-      `--name=${name}`,
+      `--name=${requestedName}`,
       "--label=Praxicraft Assess",
       "--description=Assess Public API for Make",
       "--theme=#0D41FF",
@@ -364,16 +397,21 @@ function ensureApp(name, version) {
       "--audience=global",
       "--private",
     ]);
-    if (version !== "1") {
-      throw new Error(
-        `Created ${name} at Make version 1, but MAKE_APP_VERSION=${version}. Set MAKE_APP_VERSION=1 and re-run.`,
-      );
+    const after = listAppRows(
+      parseJsonLoose(runMake(["sdk-apps", "list"], { allowFail: true }).stdout),
+    );
+    const created =
+      after.find((a) => a.name === requestedName) ||
+      after.find((a) => a.name.startsWith(`${requestedName}-`)) ||
+      after.find((a) => a.label.toLowerCase() === "praxicraft assess");
+    if (!created) {
+      throw new Error("MAKE_APP_CREATE created an app but it was not visible in sdk-apps list");
     }
-    console.log(`created app ${name}@1`);
-    return;
+    console.log(`created app ${created.name}@${created.version}`);
+    return { name: created.name, version: created.version };
   }
 
-  throw new Error(`Unknown app or version (${name}, ${version})`);
+  throw new Error(`Unknown app or version (${requestedName}, ${requestedVersion})`);
 }
 
 function ensureRpc(appName, version, rpcName, meta, connectionName) {
@@ -441,16 +479,21 @@ function main() {
     process.exit(0);
   }
 
-  const name = process.env.MAKE_APP_NAME.trim();
-  const version = (process.env.MAKE_APP_VERSION || "1").trim();
-  console.log(`Deploying to Make app ${name}@${version} (zone=${process.env.MAKE_ZONE})`);
+  const requestedName = process.env.MAKE_APP_NAME.trim();
+  const requestedVersion = (process.env.MAKE_APP_VERSION || "1").trim();
+  console.log(
+    `Deploying to Make app ${requestedName}@${requestedVersion} (zone=${process.env.MAKE_ZONE})`,
+  );
 
+  let name;
+  let version;
   try {
-    ensureApp(name, version);
+    ({ name, version } = ensureApp(requestedName, requestedVersion));
   } catch (err) {
     console.error(`FATAL app: ${err.message}`);
     process.exit(1);
   }
+  console.log(`Resolved target ${name}@${version}`);
 
   let hardFailures = 0;
 
