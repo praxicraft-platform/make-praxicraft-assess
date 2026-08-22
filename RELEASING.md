@@ -54,3 +54,10 @@ export MAKE_APP_NAME=praxicraft-assess
 export MAKE_APP_VERSION=1
 npm run deploy
 ```
+
+`scripts/deploy-to-make.js` targets `@makehq/cli@1.4.0`:
+
+- Connections / webhooks: no `--app-version`; remote names come from `list`/`create` (often `{app-name}` or `{app-name}-N`)
+- Connection sections: `parameters` + `api` (not `params` / `communication`)
+- Modules: require `--type-id` (`action=4`, `search=9`, `instant_trigger=10`, `universal=12`)
+- Instant-trigger webhook link: REST `PATCH` (CLI update has no `--webhook`)
