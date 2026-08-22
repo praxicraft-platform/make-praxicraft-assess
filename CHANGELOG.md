@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.1
+
+- Maintenance release.
+
 ## 0.1.0
 
 - Initial Make Custom App: Bearer API key connection, Public API parity (~64 modules), Watch Assess Event instant trigger, RPCs, Make an API Call.
