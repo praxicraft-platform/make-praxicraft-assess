@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.2
+
+- docs: align README with Zapier-style product guide
+
 ## 0.0.1
 
 - Maintenance release.
