@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.4
+
+- fix: preflight Make app name/version before deploy
+
 ## 0.0.3
 
 - fix: align Make deploy script with @makehq/cli 1.4 flags

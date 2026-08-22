@@ -1,6 +1,6 @@
 {
   "name": "make-praxicraft-assess",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": true,
   "description": "Make.com Custom App for Praxicraft Assess — same Public API surface as the Zapier app and n8n node.",
   "homepage": "https://docs.praxicraft.com/make",
