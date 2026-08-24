@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.7
+
+- ci: release via tags only (no push to main) (#5)
+
 ## 0.0.6
 
 - fix: skip epoch on instant triggers; verify webhook link
