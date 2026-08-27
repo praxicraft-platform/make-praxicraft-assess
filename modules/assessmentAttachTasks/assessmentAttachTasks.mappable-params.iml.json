@@ -1,0 +1,23 @@
+[
+  {
+    "name": "slug",
+    "type": "select",
+    "label": "Assessment",
+    "required": true,
+    "options": "rpc://listAssessmentsRpc"
+  },
+  {
+    "name": "taskIds",
+    "type": "text",
+    "label": "Task IDs",
+    "required": true,
+    "help": "Comma-separated UUIDs, or use Tasks JSON below for full control"
+  },
+  {
+    "name": "tasks",
+    "type": "text",
+    "label": "Tasks JSON",
+    "required": false,
+    "help": "Optional JSON array: [{\"task_id\":\"uuid\",\"source\":\"platform\"}]"
+  }
+]

@@ -72,16 +72,16 @@
     "required": false
   },
   {
-    "name": "coding_case_ids",
+    "name": "coding_task_ids",
     "type": "text",
-    "label": "Coding Case IDs",
+    "label": "Coding Task IDs",
     "required": false,
     "help": "Comma-separated UUIDs or JSON array"
   },
   {
-    "name": "org_case_ids",
+    "name": "org_task_ids",
     "type": "text",
-    "label": "Org Case IDs",
+    "label": "Org Task IDs",
     "required": false,
     "help": "Comma-separated UUIDs or JSON array"
   }

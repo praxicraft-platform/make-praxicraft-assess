@@ -1,0 +1,7 @@
+{
+  "url": "/tasks/{{parameters.id}}/",
+  "method": "GET",
+  "response": {
+    "output": "{{body}}"
+  }
+}

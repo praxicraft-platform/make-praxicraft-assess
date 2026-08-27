@@ -103,130 +103,130 @@
           "samples": "modules/assessmentListResults/assessmentListResults.samples.iml.json"
         }
       },
-      "assessmentListCases": {
+      "assessmentListTasks": {
         "moduleType": "search",
-        "label": "List Assessment Cases",
-        "description": "List cases attached to an assessment.",
+        "label": "List Assessment Tasks",
+        "description": "List tasks attached to an assessment.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/assessmentListCases/assessmentListCases.communication.iml.json",
-          "mappableParams": "modules/assessmentListCases/assessmentListCases.mappable-params.iml.json",
-          "interface": "modules/assessmentListCases/assessmentListCases.interface.iml.json",
-          "samples": "modules/assessmentListCases/assessmentListCases.samples.iml.json"
+          "communication": "modules/assessmentListTasks/assessmentListTasks.communication.iml.json",
+          "mappableParams": "modules/assessmentListTasks/assessmentListTasks.mappable-params.iml.json",
+          "interface": "modules/assessmentListTasks/assessmentListTasks.interface.iml.json",
+          "samples": "modules/assessmentListTasks/assessmentListTasks.samples.iml.json"
         }
       },
-      "assessmentAttachCases": {
+      "assessmentAttachTasks": {
         "moduleType": "action",
-        "label": "Attach Cases",
-        "description": "Attach cases to an assessment.",
+        "label": "Attach Tasks",
+        "description": "Attach tasks to an assessment.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/assessmentAttachCases/assessmentAttachCases.communication.iml.json",
-          "mappableParams": "modules/assessmentAttachCases/assessmentAttachCases.mappable-params.iml.json",
-          "interface": "modules/assessmentAttachCases/assessmentAttachCases.interface.iml.json",
-          "samples": "modules/assessmentAttachCases/assessmentAttachCases.samples.iml.json"
+          "communication": "modules/assessmentAttachTasks/assessmentAttachTasks.communication.iml.json",
+          "mappableParams": "modules/assessmentAttachTasks/assessmentAttachTasks.mappable-params.iml.json",
+          "interface": "modules/assessmentAttachTasks/assessmentAttachTasks.interface.iml.json",
+          "samples": "modules/assessmentAttachTasks/assessmentAttachTasks.samples.iml.json"
         },
         "actionCrud": "update"
       },
-      "assessmentReplaceCases": {
+      "assessmentReplaceTasks": {
         "moduleType": "action",
-        "label": "Replace Cases",
-        "description": "Replace all cases on an assessment.",
+        "label": "Replace Tasks",
+        "description": "Replace all tasks on an assessment.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/assessmentReplaceCases/assessmentReplaceCases.communication.iml.json",
-          "mappableParams": "modules/assessmentReplaceCases/assessmentReplaceCases.mappable-params.iml.json",
-          "interface": "modules/assessmentReplaceCases/assessmentReplaceCases.interface.iml.json",
-          "samples": "modules/assessmentReplaceCases/assessmentReplaceCases.samples.iml.json"
+          "communication": "modules/assessmentReplaceTasks/assessmentReplaceTasks.communication.iml.json",
+          "mappableParams": "modules/assessmentReplaceTasks/assessmentReplaceTasks.mappable-params.iml.json",
+          "interface": "modules/assessmentReplaceTasks/assessmentReplaceTasks.interface.iml.json",
+          "samples": "modules/assessmentReplaceTasks/assessmentReplaceTasks.samples.iml.json"
         },
         "actionCrud": "update"
       },
-      "assessmentRemoveCase": {
+      "assessmentRemoveTask": {
         "moduleType": "action",
-        "label": "Remove Case",
-        "description": "Remove one case from an assessment.",
+        "label": "Remove Task",
+        "description": "Remove one task from an assessment.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/assessmentRemoveCase/assessmentRemoveCase.communication.iml.json",
-          "mappableParams": "modules/assessmentRemoveCase/assessmentRemoveCase.mappable-params.iml.json",
-          "interface": "modules/assessmentRemoveCase/assessmentRemoveCase.interface.iml.json",
-          "samples": "modules/assessmentRemoveCase/assessmentRemoveCase.samples.iml.json"
+          "communication": "modules/assessmentRemoveTask/assessmentRemoveTask.communication.iml.json",
+          "mappableParams": "modules/assessmentRemoveTask/assessmentRemoveTask.mappable-params.iml.json",
+          "interface": "modules/assessmentRemoveTask/assessmentRemoveTask.interface.iml.json",
+          "samples": "modules/assessmentRemoveTask/assessmentRemoveTask.samples.iml.json"
         },
         "actionCrud": "delete"
       },
-      "caseList": {
+      "taskList": {
         "moduleType": "search",
-        "label": "List Org Cases",
-        "description": "List organisation cases.",
+        "label": "List Org Tasks",
+        "description": "List organisation tasks.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/caseList/caseList.communication.iml.json",
-          "mappableParams": "modules/caseList/caseList.mappable-params.iml.json",
-          "interface": "modules/caseList/caseList.interface.iml.json",
-          "samples": "modules/caseList/caseList.samples.iml.json"
+          "communication": "modules/taskList/taskList.communication.iml.json",
+          "mappableParams": "modules/taskList/taskList.mappable-params.iml.json",
+          "interface": "modules/taskList/taskList.interface.iml.json",
+          "samples": "modules/taskList/taskList.samples.iml.json"
         }
       },
-      "caseListPlatform": {
+      "taskListPlatform": {
         "moduleType": "search",
-        "label": "List Platform Cases",
-        "description": "List Praxicraft platform library cases.",
+        "label": "List Platform Tasks",
+        "description": "List Praxicraft platform library tasks.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/caseListPlatform/caseListPlatform.communication.iml.json",
-          "mappableParams": "modules/caseListPlatform/caseListPlatform.mappable-params.iml.json",
-          "interface": "modules/caseListPlatform/caseListPlatform.interface.iml.json",
-          "samples": "modules/caseListPlatform/caseListPlatform.samples.iml.json"
+          "communication": "modules/taskListPlatform/taskListPlatform.communication.iml.json",
+          "mappableParams": "modules/taskListPlatform/taskListPlatform.mappable-params.iml.json",
+          "interface": "modules/taskListPlatform/taskListPlatform.interface.iml.json",
+          "samples": "modules/taskListPlatform/taskListPlatform.samples.iml.json"
         }
       },
-      "caseCreate": {
+      "taskCreate": {
         "moduleType": "action",
-        "label": "Create Case",
-        "description": "Create an organisation case.",
+        "label": "Create Task",
+        "description": "Create an organisation task.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/caseCreate/caseCreate.communication.iml.json",
-          "mappableParams": "modules/caseCreate/caseCreate.mappable-params.iml.json",
-          "interface": "modules/caseCreate/caseCreate.interface.iml.json",
-          "samples": "modules/caseCreate/caseCreate.samples.iml.json"
+          "communication": "modules/taskCreate/taskCreate.communication.iml.json",
+          "mappableParams": "modules/taskCreate/taskCreate.mappable-params.iml.json",
+          "interface": "modules/taskCreate/taskCreate.interface.iml.json",
+          "samples": "modules/taskCreate/taskCreate.samples.iml.json"
         },
         "actionCrud": "create"
       },
-      "caseGet": {
+      "taskGet": {
         "moduleType": "action",
-        "label": "Get Case",
-        "description": "Get an organisation case.",
+        "label": "Get Task",
+        "description": "Get an organisation task.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/caseGet/caseGet.communication.iml.json",
-          "mappableParams": "modules/caseGet/caseGet.mappable-params.iml.json",
-          "interface": "modules/caseGet/caseGet.interface.iml.json",
-          "samples": "modules/caseGet/caseGet.samples.iml.json"
+          "communication": "modules/taskGet/taskGet.communication.iml.json",
+          "mappableParams": "modules/taskGet/taskGet.mappable-params.iml.json",
+          "interface": "modules/taskGet/taskGet.interface.iml.json",
+          "samples": "modules/taskGet/taskGet.samples.iml.json"
         },
         "actionCrud": "read"
       },
-      "caseUpdate": {
+      "taskUpdate": {
         "moduleType": "action",
-        "label": "Update Case",
-        "description": "Update an organisation case.",
+        "label": "Update Task",
+        "description": "Update an organisation task.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/caseUpdate/caseUpdate.communication.iml.json",
-          "mappableParams": "modules/caseUpdate/caseUpdate.mappable-params.iml.json",
-          "interface": "modules/caseUpdate/caseUpdate.interface.iml.json",
-          "samples": "modules/caseUpdate/caseUpdate.samples.iml.json"
+          "communication": "modules/taskUpdate/taskUpdate.communication.iml.json",
+          "mappableParams": "modules/taskUpdate/taskUpdate.mappable-params.iml.json",
+          "interface": "modules/taskUpdate/taskUpdate.interface.iml.json",
+          "samples": "modules/taskUpdate/taskUpdate.samples.iml.json"
         },
         "actionCrud": "update"
       },
-      "caseDelete": {
+      "taskDelete": {
         "moduleType": "action",
-        "label": "Delete Case",
-        "description": "Delete an organisation case.",
+        "label": "Delete Task",
+        "description": "Delete an organisation task.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/caseDelete/caseDelete.communication.iml.json",
-          "mappableParams": "modules/caseDelete/caseDelete.mappable-params.iml.json",
-          "interface": "modules/caseDelete/caseDelete.interface.iml.json",
-          "samples": "modules/caseDelete/caseDelete.samples.iml.json"
+          "communication": "modules/taskDelete/taskDelete.communication.iml.json",
+          "mappableParams": "modules/taskDelete/taskDelete.mappable-params.iml.json",
+          "interface": "modules/taskDelete/taskDelete.interface.iml.json",
+          "samples": "modules/taskDelete/taskDelete.samples.iml.json"
         },
         "actionCrud": "delete"
       },
@@ -791,16 +791,16 @@
         },
         "actionCrud": "delete"
       },
-      "interviewListOrgCases": {
+      "interviewListOrgTasks": {
         "moduleType": "search",
-        "label": "List Interview Org Cases",
-        "description": "List org cases available for interviews.",
+        "label": "List Interview Org Tasks",
+        "description": "List org tasks available for interviews.",
         "connection": "apiKey",
         "codeFiles": {
-          "communication": "modules/interviewListOrgCases/interviewListOrgCases.communication.iml.json",
-          "mappableParams": "modules/interviewListOrgCases/interviewListOrgCases.mappable-params.iml.json",
-          "interface": "modules/interviewListOrgCases/interviewListOrgCases.interface.iml.json",
-          "samples": "modules/interviewListOrgCases/interviewListOrgCases.samples.iml.json"
+          "communication": "modules/interviewListOrgTasks/interviewListOrgTasks.communication.iml.json",
+          "mappableParams": "modules/interviewListOrgTasks/interviewListOrgTasks.mappable-params.iml.json",
+          "interface": "modules/interviewListOrgTasks/interviewListOrgTasks.interface.iml.json",
+          "samples": "modules/interviewListOrgTasks/interviewListOrgTasks.samples.iml.json"
         }
       },
       "integrationList": {
@@ -933,44 +933,44 @@
             "remote": "assessmentListResults"
           },
           {
-            "local": "assessmentListCases",
-            "remote": "assessmentListCases"
+            "local": "assessmentListTasks",
+            "remote": "assessmentListTasks"
           },
           {
-            "local": "assessmentAttachCases",
-            "remote": "assessmentAttachCases"
+            "local": "assessmentAttachTasks",
+            "remote": "assessmentAttachTasks"
           },
           {
-            "local": "assessmentReplaceCases",
-            "remote": "assessmentReplaceCases"
+            "local": "assessmentReplaceTasks",
+            "remote": "assessmentReplaceTasks"
           },
           {
-            "local": "assessmentRemoveCase",
-            "remote": "assessmentRemoveCase"
+            "local": "assessmentRemoveTask",
+            "remote": "assessmentRemoveTask"
           },
           {
-            "local": "caseList",
-            "remote": "caseList"
+            "local": "taskList",
+            "remote": "taskList"
           },
           {
-            "local": "caseListPlatform",
-            "remote": "caseListPlatform"
+            "local": "taskListPlatform",
+            "remote": "taskListPlatform"
           },
           {
-            "local": "caseCreate",
-            "remote": "caseCreate"
+            "local": "taskCreate",
+            "remote": "taskCreate"
           },
           {
-            "local": "caseGet",
-            "remote": "caseGet"
+            "local": "taskGet",
+            "remote": "taskGet"
           },
           {
-            "local": "caseUpdate",
-            "remote": "caseUpdate"
+            "local": "taskUpdate",
+            "remote": "taskUpdate"
           },
           {
-            "local": "caseDelete",
-            "remote": "caseDelete"
+            "local": "taskDelete",
+            "remote": "taskDelete"
           },
           {
             "local": "invitationList",
@@ -1149,8 +1149,8 @@
             "remote": "interviewDeleteTemplate"
           },
           {
-            "local": "interviewListOrgCases",
-            "remote": "interviewListOrgCases"
+            "local": "interviewListOrgTasks",
+            "remote": "interviewListOrgTasks"
           },
           {
             "local": "integrationList",

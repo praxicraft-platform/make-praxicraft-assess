@@ -111,14 +111,14 @@ describe("parity", () => {
     assert.match(attach[1].url, /test/);
   });
 
-  it("attachCases coerces comma-separated or JSON case_ids", () => {
+  it("attachTasks coerces comma-separated or JSON taskIds", () => {
     const comm = JSON.parse(
       fs.readFileSync(
-        path.join(ROOT, "modules/assessmentAttachCases/assessmentAttachCases.communication.iml.json"),
+        path.join(ROOT, "modules/assessmentAttachTasks/assessmentAttachTasks.communication.iml.json"),
         "utf8",
       ),
     );
-    assert.match(String(comm.body.case_ids), /parseJSON|split/);
+    assert.match(String(comm.body.taskIds), /parseJSON|split/);
   });
 
   it("listAssessmentsRpc wired on invite slug param", () => {

@@ -8,21 +8,21 @@
       "assessmentUpdate",
       "assessmentDuplicate",
       "assessmentListResults",
-      "assessmentListCases",
-      "assessmentAttachCases",
-      "assessmentReplaceCases",
-      "assessmentRemoveCase"
+      "assessmentListTasks",
+      "assessmentAttachTasks",
+      "assessmentReplaceTasks",
+      "assessmentRemoveTask"
     ]
   },
   {
-    "label": "Cases",
+    "label": "Tasks",
     "modules": [
-      "caseList",
-      "caseListPlatform",
-      "caseCreate",
-      "caseGet",
-      "caseUpdate",
-      "caseDelete"
+      "taskList",
+      "taskListPlatform",
+      "taskCreate",
+      "taskGet",
+      "taskUpdate",
+      "taskDelete"
     ]
   },
   {
@@ -92,7 +92,7 @@
       "interviewCreateTemplate",
       "interviewUpdateTemplate",
       "interviewDeleteTemplate",
-      "interviewListOrgCases"
+      "interviewListOrgTasks"
     ]
   },
   {

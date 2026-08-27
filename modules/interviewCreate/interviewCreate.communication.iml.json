@@ -2,9 +2,9 @@
   "url": "/interviews/create/",
   "method": "POST",
   "body": {
-    "{{...}}": "{{omit(parameters, 'coding_case_ids', 'org_case_ids')}}",
-    "coding_case_ids": "{{if(length(trim(parameters.coding_case_ids)) = 0, undefined, if(substring(trim(parameters.coding_case_ids), 0, 1) = '[', parseJSON(parameters.coding_case_ids), map(split(parameters.coding_case_ids, ','), trim)))}}",
-    "org_case_ids": "{{if(length(trim(parameters.org_case_ids)) = 0, undefined, if(substring(trim(parameters.org_case_ids), 0, 1) = '[', parseJSON(parameters.org_case_ids), map(split(parameters.org_case_ids, ','), trim)))}}"
+    "{{...}}": "{{omit(parameters, 'coding_task_ids', 'org_task_ids')}}",
+    "coding_task_ids": "{{if(length(trim(parameters.coding_task_ids)) = 0, undefined, if(substring(trim(parameters.coding_task_ids), 0, 1) = '[', parseJSON(parameters.coding_task_ids), map(split(parameters.coding_task_ids, ','), trim)))}}",
+    "org_task_ids": "{{if(length(trim(parameters.org_task_ids)) = 0, undefined, if(substring(trim(parameters.org_task_ids), 0, 1) = '[', parseJSON(parameters.org_task_ids), map(split(parameters.org_task_ids, ','), trim)))}}"
   },
   "type": "json",
   "response": {

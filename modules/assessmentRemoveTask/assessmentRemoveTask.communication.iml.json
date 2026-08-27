@@ -1,0 +1,11 @@
+{
+  "url": "/assessments/{{parameters.slug}}/tasks/remove/",
+  "method": "DELETE",
+  "body": {
+    "assessment_task_id": "{{parameters.assessmentTaskId}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

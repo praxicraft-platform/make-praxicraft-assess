@@ -1,0 +1,11 @@
+{
+  "url": "/tasks/{{parameters.id}}/",
+  "method": "PATCH",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'id')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

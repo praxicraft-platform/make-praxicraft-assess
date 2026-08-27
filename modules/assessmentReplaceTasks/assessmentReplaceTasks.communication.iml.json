@@ -1,0 +1,12 @@
+{
+  "url": "/assessments/{{parameters.slug}}/tasks/replace/",
+  "method": "PUT",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'slug', 'taskIds', 'tasks')}}",
+    "tasks": "{{if(length(trim(parameters.tasks)) > 0, parseJSON(parameters.tasks), map(split(parameters.taskIds, ','), (id) => ({ task_id: trim(id), source: 'platform' })))}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

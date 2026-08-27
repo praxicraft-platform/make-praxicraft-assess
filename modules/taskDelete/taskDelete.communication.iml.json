@@ -1,0 +1,11 @@
+{
+  "url": "/tasks/{{parameters.id}}/",
+  "method": "DELETE",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'id')}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}

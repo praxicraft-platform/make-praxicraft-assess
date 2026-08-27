@@ -1,0 +1,12 @@
+{
+  "url": "/tasks/create/",
+  "method": "POST",
+  "body": {
+    "{{...}}": "{{omit(parameters, 'options_json', 'options')}}",
+    "options": "{{if(length(trim(parameters.options_json)) > 0, parseJSON(parameters.options_json), undefined)}}"
+  },
+  "type": "json",
+  "response": {
+    "output": "{{body}}"
+  }
+}
