@@ -1,5 +1,12 @@
 # Changelog
 
+
+## 1.0.0
+
+### Breaking
+
+- Rename Make modules from case* to task*; Public API paths use /tasks/.
+
 ## 0.0.6
 
 - fix: skip epoch on instant triggers; verify webhook link

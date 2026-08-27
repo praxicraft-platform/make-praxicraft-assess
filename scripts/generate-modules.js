@@ -46,7 +46,7 @@ function sampleInterface(sample) {
 function groupLabel(resource) {
   const map = {
     assessment: "Assessments",
-    case: "Cases",
+    task: "Tasks",
     invitation: "Invitations",
     pipeline: "Pipelines",
     webhook: "Webhooks",

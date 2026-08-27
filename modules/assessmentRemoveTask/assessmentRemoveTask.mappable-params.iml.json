@@ -1,0 +1,15 @@
+[
+  {
+    "name": "slug",
+    "type": "text",
+    "label": "Assessment Slug",
+    "required": true
+  },
+  {
+    "name": "assessmentTaskId",
+    "type": "text",
+    "label": "Assessment Task ID",
+    "required": true,
+    "help": "Join-row id from List Assessment Tasks (assessment_task_id)"
+  }
+]

@@ -77,8 +77,8 @@ Creates are writes. Searches are GET / list. All paths target `/api/v1/public/â€
 
 | Resource | Common modules |
 |----------|----------------|
-| Assessment | List / Get / Create / Update / Duplicate Assessment, List Assessment Results, Attach / Replace / Remove Cases |
-| Case | List Org Cases, List Platform Cases, Create / Get / Update / Delete Case |
+| Assessment | List / Get / Create / Update / Duplicate Assessment, List Assessment Results, Attach / Replace / Remove Tasks |
+| Task | List Org Tasks, List Platform Tasks, Create / Get / Update / Delete Task |
 | Invitation | List Invitations, Invite Candidate, Bulk Invite Candidates, Get Invitation, Get Invitation Result, Remind Candidate, Cancel Invitation |
 | Pipeline | List Pipelines, Enroll Candidate, Bulk Enroll Candidates, List Enrollments, Reject / Hold / Unhold Enrollment |
 | Webhook | List Webhooks, Create / Update / Delete Webhook, List Webhook Deliveries, Test Webhook |
@@ -88,7 +88,7 @@ Creates are writes. Searches are GET / list. All paths target `/api/v1/public/â€
 | Trigger | **Watch Assess Event** â€” one event per scenario |
 | Advanced | **Make an API Call** â€” any Public API path |
 
-Many modules use dropdowns for assessments, cases, invitations, pipelines, enrollments, webhooks, interviews, templates, and squads. You can still map an id from a previous module. Bulk invite and enroll accept a JSON list of candidates (or comma-separated lists where noted).
+Many modules use dropdowns for assessments, tasks, invitations, pipelines, enrollments, webhooks, interviews, templates, and squads. You can still map an id from a previous module. Bulk invite and enroll accept a JSON list of candidates (or comma-separated lists where noted).
 
 ### Invite a candidate
 
@@ -122,7 +122,7 @@ The module returns `invite_token` and invite URL fields.
 ### Build and activate an assessment
 
 1. Module **Create Assessment** (title, time limit, passing score)
-2. Module **Attach Cases** with case UUIDs (JSON array or comma-separated)
+2. Module **Attach Tasks** with task UUIDs (JSON array or comma-separated)
 3. Module **Update Assessment** â†’ Status `active`
 
 ### Enroll into a hiring pipeline

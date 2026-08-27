@@ -1,7 +1,0 @@
-{
-  "url": "/cases/{{parameters.id}}/",
-  "method": "GET",
-  "response": {
-    "output": "{{body}}"
-  }
-}
